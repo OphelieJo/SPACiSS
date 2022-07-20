@@ -63,6 +63,12 @@ set(SOURCES
 	src/element/agentcluster.cpp
 	src/element/areawaypoint.cpp
 	src/element/attractionarea.cpp
+	src/element/child.cpp
+	src/element/preadolescent.cpp
+	src/element/adolescent.cpp
+	src/element/elderly.cpp
+	src/element/oldelderly.cpp
+	src/element/adolescent.cpp
 	src/element/queueingwaypoint.cpp
 	src/element/waitingqueue.cpp
 	src/element/waypoint.cpp
@@ -90,12 +96,17 @@ set(MOC_FILES
 	include/pedsim_simulator/config.h
 	include/pedsim_simulator/scene.h
 	include/pedsim_simulator/agentstatemachine.h
-
 	include/pedsim_simulator/element/scenarioelement.h
 	include/pedsim_simulator/element/agent.h
 	include/pedsim_simulator/element/agentcluster.h
 	include/pedsim_simulator/element/agentgroup.h
 	include/pedsim_simulator/element/attractionarea.h
+	include/pedsim_simulator/element/child.h
+	include/pedsim_simulator/element/preadolescent.h
+	include/pedsim_simulator/element/adolescent.h
+	include/pedsim_simulator/element/elderly.h
+	include/pedsim_simulator/element/oldelderly.h
+	include/pedsim_simulator/element/adolescent.h
 	include/pedsim_simulator/element/obstacle.h
 	include/pedsim_simulator/element/waypoint.h
 	include/pedsim_simulator/element/areawaypoint.h

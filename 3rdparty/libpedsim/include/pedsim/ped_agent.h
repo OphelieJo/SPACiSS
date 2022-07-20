@@ -45,12 +45,15 @@ public:
   enum AgentType
   {
     ADULT = 0,
-    CHILD = 1, //UNUSED
+    CHILD = 1,
     ROBOT = 2,
     ELDER = 3,
     IMMOB = 4,
     WARPDRIVER = 5, //UNUSED
-    FROM_FILE = 6 //UNUSED
+    FROM_FILE = 6, //UNUSED
+    ADO = 7,
+    PREADO = 8,
+    OLDELDER = 9,
   };
 
   Tagent();
