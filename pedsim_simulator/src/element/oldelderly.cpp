@@ -4,7 +4,7 @@
 #include <cmath>
 #include <random>
 
-default_random_engine generator;
+default_random_engine generator_oldeld;
 
 Oldelderly::Oldelderly()
 {
@@ -14,5 +14,5 @@ Oldelderly::Oldelderly()
     //assign random maximal speed in m/s with mean 1.05
     normal_distribution<double> distribution(1.05, 0.26);
 
-    vmax = distribution(generator);
+    vmax = distribution(generator_oldeld);
 }

@@ -4,7 +4,7 @@
 #include <cmath>
 #include <random>
 
-default_random_engine generator;
+default_random_engine generator_preado;
 
 Preadolescent::Preadolescent()
 {
@@ -14,5 +14,5 @@ Preadolescent::Preadolescent()
     //assign random maximal speed in m/s with mean 1.25
    normal_distribution<double> distribution(1.20, 0.26);
 
-   vmax = distribution(generator);
+   vmax = distribution(generator_preado);
 }

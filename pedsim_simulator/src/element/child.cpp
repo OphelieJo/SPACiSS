@@ -4,7 +4,7 @@
 #include <cmath>
 #include <random>
 
-default_random_engine generator;
+default_random_engine generator_child;
 
 Child::Child()
 {
@@ -14,5 +14,5 @@ Child::Child()
     //assign random maximal speed in m/s with mean 0.435
     normal_distribution<double> distribution(0.435, 0.26);
 
-    vmax = distribution(generator);
+    vmax = distribution(generator_child);
 }
