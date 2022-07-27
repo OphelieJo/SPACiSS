@@ -187,6 +187,16 @@ protected:
 private:
   double ellipseWidth;
   double ellipseThickness;
+//  double angleFrontalCollisionRisk;
+//  double dangerRadius;
+//  double riskRadius;
+//  double ttcLow;
+//  double ttcUp;
+//  double ttcImminent;
+//  double hesitationThreshold;
+
+  //Attribut private became protected for heritage
+protected:
   double angleFrontalCollisionRisk;
   double dangerRadius;
   double riskRadius;
@@ -210,6 +220,10 @@ protected:
   bool emergencyStop;
   double runVmax;
 
+  //from protected to public (for processCarInofmation but it's bad find other ootion for group lignes in pCI)
+// public :
+//  bool isRunning;
+//  bool isStopped;
 
 
 public:
@@ -257,6 +271,11 @@ private:
    void processCarInformation(const Agent* car);
    Ped::Tvector carAcceleration(Ped::Tvector);
    bool isEmergencyStopNeeded();
+//   void wantStop();
+//   void wantRun();
+
+  //from private to protected
+ protected :
    void wantStop();
    void wantRun();
 

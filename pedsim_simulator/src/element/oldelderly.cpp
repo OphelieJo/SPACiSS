@@ -12,7 +12,7 @@ Oldelderly::Oldelderly()
    Ped::Tagent::setType(Ped::Tagent::OLDELDER);
 
     //assign random maximal speed in m/s with mean 1.05
-    normal_distribution<double> distribution(1.05, 0.26);
+    normal_distribution<double> distribution(1.05, 0.24);
 
     vmax = distribution(generator_oldeld);
 }

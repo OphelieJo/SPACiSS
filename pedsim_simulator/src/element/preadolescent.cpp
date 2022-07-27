@@ -12,7 +12,8 @@ Preadolescent::Preadolescent()
    Ped::Tagent::setType(Ped::Tagent::PREADO);
 
     //assign random maximal speed in m/s with mean 1.25
-   normal_distribution<double> distribution(1.20, 0.26);
+   normal_distribution<double> distribution(1.20, 0.303);
 
    vmax = distribution(generator_preado);
 }
+
