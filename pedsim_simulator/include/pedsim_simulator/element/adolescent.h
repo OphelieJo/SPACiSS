@@ -9,16 +9,16 @@ class Adolescent : public Agent
     //Constructor and Destructor
 public:
    Adolescent();
-  // virtual ~Adolescent();
+  //virtual ~Adolescent();
 
 //public:
-  // void setType(Ped::Tagent::AgentType typeIn);
+//   void setType(Ped::Tagent::AgentType typeIn);
 
 //public:
-  // void varyDistraction();
+//   void varyDistraction();
 
-//protected:
-  //  double vmax;
+protected:
+    double vmax;
 
 };
 

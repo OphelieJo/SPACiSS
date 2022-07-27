@@ -9,8 +9,11 @@ public:
     Oldelderly();
    // virtual ~Oldelderly();
 
-//protected:
-  //  double vmax;
+//public:
+ //  void setType(Ped::Tagent::AgentType typeIn);
+
+protected:
+    double vmax;
 
 };
 

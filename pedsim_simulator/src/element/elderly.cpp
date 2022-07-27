@@ -1,8 +1,24 @@
+#include <pedsim_simulator/agentstatemachine.h>
+#include <pedsim_simulator/config.h>
+#include <pedsim_simulator/element/waypoint.h>
+#include <pedsim_simulator/force/force.h>
+#include "pedsim_simulator/element/obstacle.h"
+#include <pedsim_simulator/element/attractionarea.h>
+#include <pedsim_simulator/scene.h>
+#include <pedsim_simulator/waypointplanner/waypointplanner.h>
+#include <pedsim_simulator/rng.h>
+
 #include <pedsim_simulator/element/elderly.h>
+
+#include <pedsim_simulator/element/agentgroup.h>
+#include <QSet>
+#include <fstream>
 
 #include <algorithm>
 #include <cmath>
 #include <random>
+
+using namespace std;
 
 default_random_engine generator_eld;
 
@@ -16,26 +32,35 @@ Elderly::Elderly()
 
    vmax = distribution(generator_eld);
 
-   //   forceSigmaObstacle = CONFIG.sigmaObstacle;
+//   forceSigmaObstacle = CONFIG.sigmaObstacle;
 
-   //   // waypoints
-   //   currentDestination = nullptr;
-   //   waypointplanner = nullptr;
-   //   purpose = UNKNOWN;
+//   // waypoints
+//   currentDestination = nullptr;
+//   waypointplanner = nullptr;
+//   purpose = UNKNOWN;
+//   // state machine
+//   stateMachine = new AgentStateMachine(this);
+//   // group
+//   group = nullptr;
 
-   //   // group
-   //   group = nullptr;
-
-   //   hasMoved = false;
-   //   initializePedestrianValues();
-   //   isRunning = false;
-   //   isStopped = false;
-   //   isSteppingBack = false;
-   //   emergencyStop = false;
-   //   perceiveAV = false;
-   //   collideAV = false;
+//   hasMoved = false;
+//   initializePedestrianValues();
+//   isRunning = false;
+//   isStopped = false;
+//   isSteppingBack = false;
+//   emergencyStop = false;
+//   perceiveAV = false;
+//   collideAV = false;
 }
 
+//Elderly::~Elderly()
+//{
+//  // clean up
+//  foreach (Force* currentForce, forces)
+//  {
+//    delete currentForce;
+//  }
+//}
 
 //Method
 void Elderly::processCarInformation(const Elderly* car)

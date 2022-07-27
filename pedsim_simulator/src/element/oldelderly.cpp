@@ -16,3 +16,12 @@ Oldelderly::Oldelderly()
 
     vmax = distribution(generator_oldeld);
 }
+
+//Oldelderly::~Oldelderly()
+//{
+//  // clean up
+//  foreach (Force* currentForce, forces)
+//  {
+//    delete currentForce;
+//  }
+//}

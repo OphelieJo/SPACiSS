@@ -16,3 +16,12 @@ Child::Child()
 
     vmax = distribution(generator_child);
 }
+
+//Child::~Child()
+//{
+//  // clean up
+//  foreach (Force* currentForce, forces)
+//  {
+//    delete currentForce;
+//  }
+//}

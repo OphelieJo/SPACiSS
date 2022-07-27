@@ -31,6 +31,7 @@
 
 #include <pedsim_simulator/config.h>
 #include <pedsim_simulator/element/agent.h>
+//#include <pedsim_simulator/element/elderly.h>
 #include <pedsim_simulator/element/agentgroup.h>
 #include <pedsim_simulator/rng.h>
 

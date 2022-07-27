@@ -214,16 +214,16 @@ protected:
   double distraction;
   bool perceiveAV;
   bool collideAV;
-  bool isRunning;
-  bool isStopped;
+//  bool isRunning;
+//  bool isStopped;
   bool isSteppingBack;
   bool emergencyStop;
   double runVmax;
 
   //from protected to public (for processCarInofmation but it's bad find other ootion for group lignes in pCI)
-// public :
-//  bool isRunning;
-//  bool isStopped;
+ public :
+  bool isRunning;
+  bool isStopped;
 
 
 public:
@@ -264,8 +264,8 @@ public:
 private:
    void realisticMove(double stepSizeIn);
    void moveToNextPositionFromFile();
-   bool hasMoved;
-   void initializePedestrianValues();
+//   bool hasMoved;
+//   void initializePedestrianValues();
    void updateVision(double);
    void updateAttention(double);
    void processCarInformation(const Agent* car);
@@ -276,6 +276,8 @@ private:
 
   //from private to protected
  protected :
+   bool hasMoved;
+   void initializePedestrianValues();
    void wantStop();
    void wantRun();
 

@@ -933,6 +933,7 @@ void Agent::setType(Ped::Tagent::AgentType typeIn)
      this->setDistraction(0.0);
   }
   else{
+     //Adolescents same values than adults
      normal_distribution<double> speed(1.34, 0.26);
      this->setVmax(speed(RNG()));
      this->SetRadius(0.35);
@@ -940,8 +941,27 @@ void Agent::setType(Ped::Tagent::AgentType typeIn)
      if (typeIn == ELDER)
      {
        // Old people slow!
-       this->setVmax(1.0);
+       normal_distribution<double> speed(1.29, 0.24);
+       this->setVmax(speed(RNG()));
        this->setForceFactorDesired(0.5);
+     }
+     if (typeIn == OLDELDER)
+     {
+         normal_distribution<double> speed(1.05, 0.24);
+         this->setVmax(speed(RNG()));
+         this->setForceFactorDesired(0.5);
+     }
+     if (typeIn == CHILD)
+     {
+         normal_distribution<double> speed(0.435, 0.35);
+         this->setVmax(speed(RNG()));
+         this->setForceFactorDesired(0.5);
+     }
+     if (typeIn == PREADO)
+     {
+         normal_distribution<double> speed(1.20, 0.303);
+         this->setVmax(speed(RNG()));
+         this->setForceFactorDesired(0.5);
      }
   }
   // inform users

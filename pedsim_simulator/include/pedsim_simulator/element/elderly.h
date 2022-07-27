@@ -10,19 +10,19 @@ public:
 //    virtual ~Elderly();
 
 //public:
-   //void setType(Ped::Tagent::AgentType typeIn);
+//   void setType(Ped::Tagent::AgentType typeIn);
 
-//public:
-  // void varyDistraction();
-   //double getDecisonTime() const;
-   //void setDecisionTime(double);
+/*public:
+   void varyDistraction();
+   double getDecisonTime() const;
+   void setDecisionTime(double);*/
 
-//protected:
-  // void processCarInformation(const Agent* car);
+protected:
+   void processCarInformation(const Elderly* car);
 
-//protected:
-  //  double vmax;
-    //double decisionTime;
+protected:
+  double vmax;
+  //double decisionTime;
 
 };
 

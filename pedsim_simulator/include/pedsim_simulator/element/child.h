@@ -7,20 +7,20 @@ class Child : public Agent
 {
 public:
     Child();
- //   virtual ~Child();
+    //virtual ~Child();
 
 //public:
-  //  void setType(Ped::Tagent::AgentType typeIn);
+//    void setType(Ped::Tagent::AgentType typeIn);
 
 
-//public:
- //	void varyDistraction();
-//	double getDecisonTime() const;
-//	void setDecisionTime(double);
+/*public:
+    void varyDistraction();
+    double getDecisonTime() const;
+    void setDecisionTime(double);*/
 
-//protected:
-//	double vmax;
-//	double decisionTime;
+protected:
+    double vmax;
+   // double decisionTime;
 
 };
 
