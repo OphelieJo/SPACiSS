@@ -1,5 +1,6 @@
 #include <pedsim_simulator/agentstatemachine.h>
 #include <pedsim_simulator/config.h>
+#include <pedsim_simulator/element/elderly.h>
 #include <pedsim_simulator/element/waypoint.h>
 #include <pedsim_simulator/force/force.h>
 #include "pedsim_simulator/element/obstacle.h"
@@ -8,17 +9,13 @@
 #include <pedsim_simulator/waypointplanner/waypointplanner.h>
 #include <pedsim_simulator/rng.h>
 
-#include <pedsim_simulator/element/elderly.h>
-
 #include <pedsim_simulator/element/agentgroup.h>
 #include <QSet>
 #include <fstream>
 
-#include <algorithm>
-#include <cmath>
 #include <random>
 
-using namespace std;
+
 
 default_random_engine generator_eld;
 
@@ -32,25 +29,6 @@ Elderly::Elderly()
 
    vmax = distribution(generator_eld);
 
-//   forceSigmaObstacle = CONFIG.sigmaObstacle;
-
-//   // waypoints
-//   currentDestination = nullptr;
-//   waypointplanner = nullptr;
-//   purpose = UNKNOWN;
-//   // state machine
-//   stateMachine = new AgentStateMachine(this);
-//   // group
-//   group = nullptr;
-
-//   hasMoved = false;
-//   initializePedestrianValues();
-//   isRunning = false;
-//   isStopped = false;
-//   isSteppingBack = false;
-//   emergencyStop = false;
-//   perceiveAV = false;
-//   collideAV = false;
 }
 
 //Elderly::~Elderly()
@@ -62,7 +40,29 @@ Elderly::Elderly()
 //  }
 //}
 
-//Method
+
+//Methods
+
+void Elderly::varyDistraction(){
+   if(type == ROBOT)
+      return;
+
+   //Allocation of value for "basic"/low distraction between 0 et 0.5
+   uniform_real_distribution<> dDistribution(0, 0.5);
+
+   //Random draw to dertimine if adolescent is very distracted (<=20)
+   uniform_real_distribution<> dist (0, 100);
+   double randomDist = dist(RNG());
+   if (randomDist > 0.5){
+       setDistraction(dDistribution(RNG()));
+   }
+   else {
+       uniform_real_distribution<> dDistribution(0.5, 1);
+       setDistraction(dDistribution(RNG()));
+   }
+}
+
+
 void Elderly::processCarInformation(const Elderly* car)
 {
    // Physical collision radius
@@ -182,11 +182,11 @@ void Elderly::processCarInformation(const Elderly* car)
                      // ignore agent himself
                      if (member == this)
                        continue;
-                     if(member->isStopped){
+                     if(member->getIsStopped()){
                         this->isSteppingBack=true;//this->wantStop();
                         break;
                      }
-                     else if(member->isRunning){
+                     else if(member->getIsRunning()){
                         this->wantRun();
                         break;
                      }

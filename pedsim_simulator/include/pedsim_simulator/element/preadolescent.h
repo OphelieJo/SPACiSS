@@ -11,6 +11,9 @@ public:
 
 //public:
   // void setType(Ped::Tagent::AgentType typeIn);
+
+public:
+   void varyDistraction();
    
 protected:
    double vmax;

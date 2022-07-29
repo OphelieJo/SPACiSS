@@ -13,10 +13,10 @@ public:
 //    void setType(Ped::Tagent::AgentType typeIn);
 
 
-/*public:
+public:
     void varyDistraction();
-    double getDecisonTime() const;
-    void setDecisionTime(double);*/
+//    double getDecisonTime() const;
+//    void setDecisionTime(double);
 
 protected:
     double vmax;

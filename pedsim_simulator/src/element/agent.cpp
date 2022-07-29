@@ -706,6 +706,15 @@ void Agent::setAttentionDistance(double attentionDistanceIn){
    attentionDistance= attentionDistanceIn;
 }
 
+//New getters
+bool Agent::getIsStopped(){
+    return isStopped;
+}
+
+bool Agent::getIsRunning(){
+    return isRunning;
+}
+
 
 void Agent::moveToNextPositionFromFile()
 {
@@ -1039,14 +1048,29 @@ void Agent::setDistraction(double distractionIn){
    this->distraction = distractionLimited;
    updateVision(distraction);
    updateAttention(distraction);
+   updateVmax(distraction);
 }
 
 // Change pedestrian distraction value
 void Agent::varyDistraction(){
    if(type == ROBOT)
       return;
-   uniform_real_distribution<> dDistribution(0, 1);
-   setDistraction(dDistribution(RNG()));
+//   uniform_real_distribution<> dDistribution(0, 1);
+//   setDistraction(dDistribution(RNG()));
+
+   //Allocation of value for "basic"/low distraction between 0 et 0.5
+   uniform_real_distribution<> dDistribution(0, 0.5);
+
+   //Random draw to dertimine if pedestrian is very distracted (<=13.5)
+   uniform_real_distribution<> dist (0, 100);
+   double randomDist = dist(RNG());
+   if (randomDist > 13.5){
+       setDistraction(dDistribution(RNG()));
+   }
+   else {
+       uniform_real_distribution<> dDistribution(0.5, 1);
+       setDistraction(dDistribution(RNG()));
+   }
 }
 
 /*
@@ -1072,6 +1096,14 @@ void Agent::updateAttention(double distraction){
    double attentionDistance = (DISTANCE_PED_MIN-ATTENTION_DISTANCE_PED_MAX) * distraction + ATTENTION_DISTANCE_PED_MAX;
    attentionDistance = max(min(attentionDistance, ATTENTION_DISTANCE_PED_MAX), DISTANCE_PED_MIN);
    this->setAttentionDistance(attentionDistance);
+}
+
+//Update the walking speed with distraction : +0.17m/s (distraction = use phone)
+void Agent::updateVmax(double distraction){
+    if (distraction > 0.5) {
+    double distVmax = this->vmax + 0.17;
+    this->setVmax(distVmax);
+    }
 }
 
 Ped::Tvector Agent::getDesiredDirection() const

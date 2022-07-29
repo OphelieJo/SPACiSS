@@ -205,6 +205,7 @@ protected:
   double ttcImminent;
   double hesitationThreshold;
 
+
 protected:
   Ped::Tangle angleMax;
   Ped::Tangle visionAngle;
@@ -214,16 +215,11 @@ protected:
   double distraction;
   bool perceiveAV;
   bool collideAV;
-//  bool isRunning;
-//  bool isStopped;
+  bool isRunning;
+  bool isStopped;
   bool isSteppingBack;
   bool emergencyStop;
   double runVmax;
-
-  //from protected to public (for processCarInofmation but it's bad find other ootion for group lignes in pCI)
- public :
-  bool isRunning;
-  bool isStopped;
 
 
 public:
@@ -261,6 +257,12 @@ public:
    void updatePerceivedObstacles();
 
 
+ //Add getter of isStopped and isRunning to access it, especially in processCarInformation of Elderly
+public :
+   bool getIsStopped();
+   bool getIsRunning();
+
+
 private:
    void realisticMove(double stepSizeIn);
    void moveToNextPositionFromFile();
@@ -280,6 +282,11 @@ private:
    void initializePedestrianValues();
    void wantStop();
    void wantRun();
+
+   //New update for walking speed (used to modulate walking speed depending on distraction)
+ private :
+   void updateVmax(double);
+
 
 public:
    static const double VISION_ANGLE_PED;

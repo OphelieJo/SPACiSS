@@ -12,10 +12,10 @@ public:
 //public:
 //   void setType(Ped::Tagent::AgentType typeIn);
 
-/*public:
+public:
    void varyDistraction();
-   double getDecisonTime() const;
-   void setDecisionTime(double);*/
+//   double getDecisonTime() const;
+//   void setDecisionTime(double);
 
 protected:
    void processCarInformation(const Elderly* car);
