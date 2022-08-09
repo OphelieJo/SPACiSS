@@ -24,7 +24,7 @@
    <obstacle id="obs5" x1="-10" y1="-26" x2="0" y2="-26" />
 
 
-    <agent x="19" y="2" n="4" dx="5" dy="10" type="3" purpose="1">
+    <agent x="19" y="2" n="4" dx="5" dy="10" type="9" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
@@ -42,11 +42,11 @@
           <addwaypoint id="goal6" />
     </agent>-->
 
-    <agent x="19" y="1" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="19" y="1" n="1" dx="0" dy="0" type="9" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>
-    <agent x="19" y="0" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="19" y="0" n="1" dx="0" dy="0" type="9" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>

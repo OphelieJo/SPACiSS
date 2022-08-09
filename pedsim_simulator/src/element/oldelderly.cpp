@@ -47,10 +47,10 @@ Oldelderly::Oldelderly()
 //   //Allocation of value for "basic"/low distraction between 0 et 0.5
 //   uniform_real_distribution<> dDistribution(0, 0.5);
 
-//   //Random draw to dertimine if adolescent is very distracted (<=20)
+//   //Random draw to dertimine if olderly is very distracted (<=??)
 //   uniform_real_distribution<> dist (0, 100);
 //   double randomDist = dist(RNG());
-//   if (randomDist > 25){
+//   if (randomDist > ??){
 //       setDistraction(dDistribution(RNG()));
 //   }
 //   else {

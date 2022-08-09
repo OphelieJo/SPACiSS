@@ -44,7 +44,7 @@ AgentCluster::AgentCluster(double xIn, double yIn, int countIn)
   theta = Ped::Tangle::fromRadian(0.0);
   count = countIn;
   distribution = QSizeF(0, 0);
-  agentType = Ped::Tagent::ADULT;
+  agentType = Ped::Tagent::OLDELDER;
   shallCreateGroups = true;
   purpose = Agent::AgentPurpose::UNKNOWN;
 };

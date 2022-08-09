@@ -103,7 +103,7 @@ void Agent::initializePedestrianValues(){
    setForceFactorObstacle(CONFIG.forceObstacle);
 
    uniform_real_distribution<> dDistribution(0.0, 1.0);
-   setDistraction(dDistribution(RNG()));
+   //setDistraction(dDistribution(RNG()));
 
    angleFrontalCollisionRisk = CONFIG.angleFrontalCollisionRisk;
    riskRadius = CONFIG.riskRadius; // increase risk radius to make ped avoid longer
@@ -986,7 +986,7 @@ void Agent::setPurpose(AgentPurpose purposeIn)
 {
    this->purpose = purposeIn;
 
-   if(this->type != ROBOT && this->type != ELDER)
+   if(this->type != ROBOT && this->type != CHILD && this->type != PREADO && this->type != ADO && this->type != ELDER && this->type != OLDELDER)
    {
       normal_distribution<double> distribution(1.34, 0.26);
       normal_distribution<double> distributionWork(1.55, 0.26);
@@ -1101,7 +1101,7 @@ void Agent::updateAttention(double distraction){
 //Update the walking speed with distraction : +0.17m/s (distraction = use phone)
 void Agent::updateVmax(double distraction){
     if (distraction > 0.5) {
-    double distVmax = this->vmax + 0.17;
+    double distVmax = this->vmax - 0.17;
     this->setVmax(distVmax);
     }
 }
