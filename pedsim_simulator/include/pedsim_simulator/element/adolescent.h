@@ -6,19 +6,13 @@
 class Adolescent : public Agent
 {
 
-    //Constructor and Destructor
+    //Constructor
 public:
    Adolescent();
-  //virtual ~Adolescent();
 
-//public:
-//   void setType(Ped::Tagent::AgentType typeIn);
-
+   //Methods
 public:
    void varyDistraction();
-
-protected:
-    double vmax;
 
 };
 

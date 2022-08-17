@@ -21,15 +21,6 @@ Adolescent::Adolescent()
 
 }
 
-//Adolescent::~Adolescent()
-//{
-//  // clean up
-//  foreach (Force* currentForce, forces)
-//  {
-//    delete currentForce;
-//  }
-//}
-
 
 //Methods
 

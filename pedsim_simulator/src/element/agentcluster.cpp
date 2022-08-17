@@ -34,7 +34,7 @@
 #include <pedsim_simulator/rng.h>
 #include <pedsim_simulator/scene.h>
 
-AgentCluster::AgentCluster(double xIn, double yIn, int countIn)
+AgentCluster::AgentCluster(double xIn, double yIn, int countIn) //mettre le type en paramètre ?
 {
   static int lastID = 0;
 
@@ -44,7 +44,9 @@ AgentCluster::AgentCluster(double xIn, double yIn, int countIn)
   theta = Ped::Tangle::fromRadian(0.0);
   count = countIn;
   distribution = QSizeF(0, 0);
-  agentType = Ped::Tagent::OLDELDER;
+
+  agentType = Ped::Tagent::ADULT;
+
   shallCreateGroups = true;
   purpose = Agent::AgentPurpose::UNKNOWN;
 };
@@ -63,7 +65,18 @@ QList<Agent*> AgentCluster::dissolve()
   // create and initialize agents
   for (int i = 0; i < count; ++i)
   {
-    Agent* a = new Agent();
+      Agent* a;
+      if (agentType == Ped::Tagent::CHILD)
+         a = new Child();
+      else if (agentType == Agent::PREADO)
+         a = new Preadolescent();
+      else if (agentType == Agent::ADO)
+         a = new Adolescent;
+      else if (agentType == Agent::ELDER)
+         a = new Elderly;
+      else if (agentType == Agent::OLDELDER)
+         a = new Oldelderly;
+      else a = new Agent;
 
     double randomizedX,randomizedY;
 
@@ -95,6 +108,7 @@ QList<Agent*> AgentCluster::dissolve()
         }
         count ++;
     }
+    ROS_INFO_STREAM("type " << a->getType());
     a->setPosition(randomizedX, randomizedY);
     // orientation
     a->setvx(cos(theta.toRadian())/100);
@@ -220,7 +234,27 @@ int AgentCluster::getType() const
 
 void AgentCluster::setType(Ped::Tagent::AgentType typeIn)
 {
-  agentType = typeIn;
+    agentType = typeIn;
+
+  if (agentType == Agent::ELDER)
+  {
+    Agent* a = new Elderly();
+  }
+  else if (agentType == Agent::OLDELDER)
+  {
+    Agent* a = new Oldelderly();
+  }
+  else if (agentType == Agent::CHILD)
+  {
+    Agent* a = new Child();
+  }
+  else if (agentType == Agent::PREADO)
+  {
+    Agent* a = new Preadolescent();
+  }
+  else {
+    Agent* a = new Agent();
+  }
 
   // inform users
   emit typeChanged(agentType);

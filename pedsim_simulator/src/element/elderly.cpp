@@ -31,15 +31,6 @@ Elderly::Elderly()
 
 }
 
-//Elderly::~Elderly()
-//{
-//  // clean up
-//  foreach (Force* currentForce, forces)
-//  {
-//    delete currentForce;
-//  }
-//}
-
 
 //Methods
 
@@ -53,7 +44,7 @@ void Elderly::varyDistraction(){
    //Random draw to dertimine if elderly is very distracted (<=0.5)
    uniform_real_distribution<> dist (0, 100);
    double randomDist = dist(RNG());
-   if (randomDist > 0.5){
+   if (randomDist > 0.5){//(randomDist > 0.5){
        setDistraction(dDistribution(RNG()));
    }
    else {
@@ -169,7 +160,7 @@ void Elderly::processCarInformation(const Elderly* car)
             //ROS_INFO_STREAM(id<<" "<<bearingAngle.sign()*bearingAngleDeriv<<" "<<bearingAngleC.sign()*bearingAngleDerivC);
             if(!isSteppingBack &&!isRunning && !isStopped && fabs(bearingAngleDeriv) <= hesitationThreshold)
             {
-              // ROS_INFO_STREAM("hesitation: run or stop");
+              //ROS_INFO_STREAM("hesitation: run or stop");
 
                // Follow group decision
                if(this->isInGroup() && pedPos == group->getCenterOfMass())
@@ -280,4 +271,13 @@ void Elderly::processCarInformation(const Elderly* car)
       }else
          socialforce = -car->v.normalized() + physicalForce();
    }
+
+   if (isRunning)
+       ROS_INFO_STREAM('run');
+   else if (isSteppingBack)
+       ROS_INFO_STREAM('stepback');
+   else if (isStopped){
+        if(ttc<ttcImminent)
+             ROS_INFO_STREAM('stop');
+}
 }

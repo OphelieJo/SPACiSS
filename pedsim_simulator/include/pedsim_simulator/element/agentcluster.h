@@ -33,6 +33,11 @@
 #define _agentcluster_h_
 
 #include <pedsim_simulator/element/agent.h>
+#include <pedsim_simulator/element/adolescent.h>
+#include <pedsim_simulator/element/child.h>
+#include <pedsim_simulator/element/elderly.h>
+#include <pedsim_simulator/element/oldelderly.h>
+#include <pedsim_simulator/element/preadolescent.h>
 
 // Forward Declarations
 class Waypoint;

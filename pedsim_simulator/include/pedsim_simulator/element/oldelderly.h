@@ -5,15 +5,10 @@
 
 class Oldelderly : public Elderly
 {
+    //Constructor
 public:
     Oldelderly();
-   // virtual ~Oldelderly();
 
-//public:
- //  void setType(Ped::Tagent::AgentType typeIn);
-
-protected:
-    double vmax;
 
 };
 

@@ -5,21 +5,22 @@
 
 class Child : public Agent
 {
+
+    //Constructor
 public:
     Child();
-    //virtual ~Child();
-
-//public:
-//    void setType(Ped::Tagent::AgentType typeIn);
 
 
+
+
+    //Methods
 public:
     void varyDistraction();
 //    double getDecisonTime() const;
 //    void setDecisionTime(double);
 
-protected:
-    double vmax;
+    //Attributes
+//public:
    // double decisionTime;
 
 };

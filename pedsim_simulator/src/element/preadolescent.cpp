@@ -28,14 +28,6 @@ Preadolescent::Preadolescent()
    vmax = distribution(generator_preado);
 }
 
-//Preadolescent::~Preadolescent()
-//{
-//  // clean up
-//  foreach (Force* currentForce, forces)
-//  {
-//    delete currentForce;
-//  }
-//}
 
 void Preadolescent::varyDistraction(){
    if(type == ROBOT)

@@ -26,19 +26,12 @@ Child::Child()
     normal_distribution<double> distribution(0.435, 0.35);
 
     vmax = distribution(generator_child);
-}
 
-//Child::~Child()
-//{
-//  // clean up
-//  foreach (Force* currentForce, forces)
-//  {
-//    delete currentForce;
-//  }
-//}
+}
 
 
 //Methods
+
 
 void Child::varyDistraction(){
    if(type == ROBOT)

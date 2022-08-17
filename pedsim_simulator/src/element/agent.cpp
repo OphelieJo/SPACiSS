@@ -901,6 +901,7 @@ void Agent::setY(double yIn)
   setPosition(getx(), yIn);
 }
 
+
 // When set max walking speed, set max running speed
 void Agent::setVmax(double vmax)
 {
@@ -942,36 +943,35 @@ void Agent::setType(Ped::Tagent::AgentType typeIn)
      this->setDistraction(0.0);
   }
   else{
-     //Adolescents same values than adults
      normal_distribution<double> speed(1.34, 0.26);
      this->setVmax(speed(RNG()));
      this->SetRadius(0.35);
      initializePedestrianValues();
-     if (typeIn == ELDER)
-     {
-       // Old people slow!
-       normal_distribution<double> speed(1.29, 0.24);
-       this->setVmax(speed(RNG()));
-       this->setForceFactorDesired(0.5);
-     }
-     if (typeIn == OLDELDER)
-     {
-         normal_distribution<double> speed(1.05, 0.24);
-         this->setVmax(speed(RNG()));
-         this->setForceFactorDesired(0.5);
-     }
-     if (typeIn == CHILD)
-     {
-         normal_distribution<double> speed(0.435, 0.35);
-         this->setVmax(speed(RNG()));
-         this->setForceFactorDesired(0.5);
-     }
-     if (typeIn == PREADO)
-     {
-         normal_distribution<double> speed(1.20, 0.303);
-         this->setVmax(speed(RNG()));
-         this->setForceFactorDesired(0.5);
-     }
+//     if (typeIn == ELDER)
+//     {
+//       // Old people slow!
+//       normal_distribution<double> speed(1.29, 0.24);
+//       this->setVmax(speed(RNG()));
+//       this->setForceFactorDesired(0.5);
+//     }
+//     if (typeIn == OLDELDER)
+//     {
+//         normal_distribution<double> speed(1.05, 0.24);
+//         this->setVmax(speed(RNG()));
+//         this->setForceFactorDesired(0.5);
+//     }
+//     if (typeIn == CHILD)
+//     {
+//         normal_distribution<double> speed(0.435, 0.35);
+//         this->setVmax(speed(RNG()));
+//         this->setForceFactorDesired(0.5);
+//     }
+//     if (typeIn == PREADO)
+//     {
+//         normal_distribution<double> speed(1.20, 0.303);
+//         this->setVmax(speed(RNG()));
+//         this->setForceFactorDesired(0.5);
+//     }
   }
   // inform users
   emit typeChanged(typeIn);
@@ -1098,7 +1098,7 @@ void Agent::updateAttention(double distraction){
    this->setAttentionDistance(attentionDistance);
 }
 
-//Update the walking speed with distraction : +0.17m/s (distraction = use phone)
+//Update the walking speed with distraction : -0.17m/s (distraction = use phone)
 void Agent::updateVmax(double distraction){
     if (distraction > 0.5) {
     double distVmax = this->vmax - 0.17;
@@ -1407,9 +1407,9 @@ void Agent::processCarInformation(const Agent* car)
                // If no decision (not in groupe or first to decide)
                if(!isRunning && !isStopped){
                   // prudent
-                  if(ELDER)
-                     this->wantStop();
-                  else {
+//                  if(ELDER)
+//                     this->wantStop();
+//                  else {
                      //normal
                      int a = rand()%2;
                      if(a == 1){
@@ -1419,7 +1419,7 @@ void Agent::processCarInformation(const Agent* car)
                           this->wantRun();
                      }
                   }
-               }
+              // }
             }
 
 
@@ -1492,6 +1492,15 @@ void Agent::processCarInformation(const Agent* car)
       }else
          socialforce = -car->v.normalized() + physicalForce();
    }
+
+   if (isRunning)
+       ROS_INFO_STREAM('ruun');
+   else if (isSteppingBack)
+       ROS_INFO_STREAM('stepback');
+   else if (isStopped){
+        if(ttc<ttcImminent)
+             ROS_INFO_STREAM('stop');
+}
 }
 
 /*

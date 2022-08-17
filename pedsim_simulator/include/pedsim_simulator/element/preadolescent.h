@@ -5,19 +5,17 @@
 
 class Preadolescent : public Child
 {
+
+    //Constructor
 public:
     Preadolescent();
-    //virtual ~Preadolescent();
 
-//public:
-  // void setType(Ped::Tagent::AgentType typeIn);
 
+
+    //Methods
 public:
    void varyDistraction();
    
-protected:
-   double vmax;
-
 };
 
 #endif // PREADOLESCENT_H

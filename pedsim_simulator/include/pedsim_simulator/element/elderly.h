@@ -5,13 +5,12 @@
 
 class Elderly : public Agent
 {
+    //Constructor
 public:
     Elderly();
-//    virtual ~Elderly();
 
-//public:
-//   void setType(Ped::Tagent::AgentType typeIn);
 
+   //Methods
 public:
    void varyDistraction();
 //   double getDecisonTime() const;
@@ -20,8 +19,8 @@ public:
 protected:
    void processCarInformation(const Elderly* car);
 
-protected:
-  double vmax;
+   //Attributes
+//protected:
   //double decisionTime;
 
 };
