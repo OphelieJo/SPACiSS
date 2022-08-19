@@ -34,5 +34,21 @@ Oldelderly::Oldelderly()
      return nomTest;
  }
 
+ //Methods
+ void Oldelderly::setType(Ped::Tagent::AgentType typeIn)
+ {
+   // call super class' method
+   Ped::Tagent::setType(typeIn);
+
+   normal_distribution<double> speed(1.05, 0.24);
+   this->setVmax(speed(RNG()));
+   this->setForceFactorDesired(0.5);
+   this->SetRadius(0.35);
+   Elderly::varyDistraction();
+   initializePedestrianValues();
+
+   // inform users
+   emit typeChanged(typeIn);
+ }
 
 

@@ -9,9 +9,14 @@ class Oldelderly : public Elderly
 public:
     Oldelderly();
 
+    //Methods
+public :
+    void setType(Ped::Tagent::AgentType typeIn);
+
     //Test
  public :
     string getNom();
+
 };
 
 #endif // OLDELDERLY_H

@@ -28,9 +28,6 @@ string Adolescent::getNom(){
 //Methods
 
 void Adolescent::varyDistraction(){
-   if(type == ROBOT)
-      return;
-
    //Allocation of value for "basic"/low distraction between 0 et 0.5
    uniform_real_distribution<> dDistribution(0, 0.5);
 

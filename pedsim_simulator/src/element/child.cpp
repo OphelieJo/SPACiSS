@@ -37,9 +37,23 @@ string Child::getNom()
 //Methods
 
 
+void Child::setType(Ped::Tagent::AgentType typeIn)
+{
+  // call super class' method
+  Ped::Tagent::setType(typeIn);
+
+  normal_distribution<double> speed(0.435, 0.35);
+  this->setVmax(speed(RNG()));
+  this->setForceFactorDesired(0.5);
+  this->SetRadius(0.35);
+  varyDistraction();
+  initializePedestrianValues();
+
+  // inform users
+  emit typeChanged(typeIn);
+}
+
 void Child::varyDistraction(){
-   if(type == ROBOT)
-      return;
 
    //Allocation of value for "basic"/low distraction between 0 et 0.5
    uniform_real_distribution<> dDistribution(0, 0.5);

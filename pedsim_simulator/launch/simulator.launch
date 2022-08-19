@@ -11,7 +11,7 @@
   <arg name="pose_initial_y" default="5.0"/>
   <arg name="pose_initial_theta" default="0.0"/>
   <arg name="probability_random_stop" default="0.0"/><!--<arg name="probability_random_stop" default="0.005"/>-->
-  <arg name="enable_distraction" default="false"/>
+  <arg name="enable_distraction" default="true"/>
   <arg name="simulation_factor" default="1"/>
   <arg name="update_rate" default="25.0"/>
   <arg name="robot_description" default="$(find experimental_package)/models/prius/urdf/prius.urdf"/>

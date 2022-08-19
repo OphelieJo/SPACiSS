@@ -109,8 +109,9 @@ void Agent::initializePedestrianValues(){
    setForceFactorSocial(CONFIG.forceSocial);
    setForceFactorObstacle(CONFIG.forceObstacle);
 
-   uniform_real_distribution<> dDistribution(0.0, 1.0);
-   setDistraction(dDistribution(RNG()));
+//   uniform_real_distribution<> dDistribution(0.0, 1.0);
+//   setDistraction(dDistribution(RNG()));
+   //varyDistraction();
 
    angleFrontalCollisionRisk = CONFIG.angleFrontalCollisionRisk;
    riskRadius = CONFIG.riskRadius; // increase risk radius to make ped avoid longer
@@ -955,32 +956,8 @@ void Agent::setType(Ped::Tagent::AgentType typeIn)
      normal_distribution<double> speed(1.34, 0.26);
      this->setVmax(speed(RNG()));
      this->SetRadius(0.35);
+     varyDistraction();
      initializePedestrianValues();
-//     if (typeIn == ELDER)
-//     {
-//       // Old people slow!
-//       normal_distribution<double> speed(1.29, 0.24);
-//       this->setVmax(speed(RNG()));
-//       this->setForceFactorDesired(0.5);
-//     }
-//     if (typeIn == OLDELDER)
-//     {
-//         normal_distribution<double> speed(1.05, 0.24);
-//         this->setVmax(speed(RNG()));
-//         this->setForceFactorDesired(0.5);
-//     }
-//     if (typeIn == CHILD)
-//     {
-//         normal_distribution<double> speed(0.435, 0.35);
-//         this->setVmax(speed(RNG()));
-//         this->setForceFactorDesired(0.5);
-//     }
-//     if (typeIn == PREADO)
-//     {
-//         normal_distribution<double> speed(1.20, 0.303);
-//         this->setVmax(speed(RNG()));
-//         this->setForceFactorDesired(0.5);
-//     }
   }
   // inform users
   emit typeChanged(typeIn);

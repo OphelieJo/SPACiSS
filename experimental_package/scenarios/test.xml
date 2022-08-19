@@ -12,11 +12,11 @@
    <waypoint id="goal7" x="0" y="-25" r="2"/>
    <waypoint id="goal8" x="0" y="25" r="2" />
 
-   <obstacle id="obs1" x1="1" y1="0" x2="-1" y2="0" />
+   <!--<obstacle id="obs1" x1="1" y1="0" x2="-1" y2="0" />
    <attraction id="att1" x="0" y="-1.5" width="3" height="2" strength="2"/>
-   <attraction id="att2" x="0" y="1.5" width="3" height="2" strength="2"/>
+   <attraction id="att2" x="0" y="1.5" width="3" height="2" strength="2"/> 
    <attraction id="att3" x="2.5" y="0" width="2" height="5" strength="2"/>
-   <attraction id="att4" x="-2.5" y="0" width="2" height="5" strength="2"/>
+   <attraction id="att4" x="-2.5" y="0" width="2" height="5" strength="2"/>-->
    <obstacle id="obs2" x1="-26" y1="-25" x2="-26" y2="0" />
    <obstacle id="obs3" x1="-26" y1="10" x2="-26" y2="25" />
    <obstacle id="obs4" x1="26" y1="-5" x2="26" y2="15" />
@@ -26,36 +26,36 @@
 
        
 <!-- global test of speed and distraction -->
-   <!--<agent x="19" y="6" n="1" dx="0" dy="0" type="8" purpose="1">
+   <agent x="19" y="6" n="1" dx="0" dy="0" type="1" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="20" y="8" n="1" dx="0" dy="0" type="0" purpose="1">
+   <agent x="20" y="8" n="1" dx="0" dy="0" type="8" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="20" y="10" n="1" dx="0" dy="0" type="7" purpose="1">
+   <agent x="20" y="10" n="1" dx="0" dy="0" type="9" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="20" y="12" n="1" dx="0" dy="0" type="9" purpose="1">
+   <agent x="20" y="12" n="1" dx="0" dy="0" type="7" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>
-    <agent x="20" y="14" n="1" dx="0" dy="0" type="1" purpose="1">
+    <agent x="20" y="14" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>
-    <agent x="19" y="16" n="1" dx="0" dy="0" type="3" purpose="1">
+    <agent x="19" y="16" n="1" dx="0" dy="0" type="0" purpose="1">
+          <addwaypoint id="goal1" />
+          <addwaypoint id="goal6" />
+    </agent>
+    
+    
+   <!-- <agent x="20" y="14" n="1" dx="0" dy="0" type="1" purpose="2">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>-->
-    
-    
-    <agent x="20" y="14" n="1" dx="0" dy="0" type="1" purpose="2">
-          <addwaypoint id="goal1" />
-          <addwaypoint id="goal6" />
-    </agent>
     
    
 <!-- Speed and distraction test for 1 type -->
@@ -93,9 +93,9 @@
    </agent> -->
    
    
-<!--
-   <agent x="15" y="-20" theta="1.57" n="1" type="2"> --> <!-- robot -->
-    <!--  <addwaypoint id="dest" />
+
+  <!-- <agent x="15" y="-20" theta="1.57" n="1" type="2"> --><!-- robot -->
+  <!--    <addwaypoint id="dest" />
       <addwaypoint id="farDest" />
    </agent> -->
 </scenario>
