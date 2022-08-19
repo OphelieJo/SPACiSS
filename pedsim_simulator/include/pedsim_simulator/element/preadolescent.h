@@ -15,7 +15,10 @@ public:
     //Methods
 public:
    void varyDistraction();
-   
+
+   //Test
+public :
+   string getNom();
 };
 
 #endif // PREADOLESCENT_H

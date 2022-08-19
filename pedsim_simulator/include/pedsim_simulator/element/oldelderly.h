@@ -9,7 +9,9 @@ class Oldelderly : public Elderly
 public:
     Oldelderly();
 
-
+    //Test
+ public :
+    string getNom();
 };
 
 #endif // OLDELDERLY_H

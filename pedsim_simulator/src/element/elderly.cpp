@@ -29,8 +29,12 @@ Elderly::Elderly()
 
    vmax = distribution(generator_eld);
 
+   nomTest = "elder";
 }
 
+string Elderly::getNom(){
+    return nomTest;
+}
 
 //Methods
 

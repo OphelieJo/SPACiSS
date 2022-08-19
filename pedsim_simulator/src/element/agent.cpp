@@ -84,7 +84,14 @@ Agent::Agent()
   emergencyStop = false;
   perceiveAV = false;
   collideAV = false;
+  nomTest = "agent";
 }
+
+string Agent::getNom()
+{
+    return nomTest;
+}
+
 
 void Agent::initializePedestrianValues(){
    // body ellipse from "Buchmüller and Weidmann, ‘Parameters of pedestrians, pedestrian traffic and walking facilities’, ETH Zurich, 2006".
@@ -103,7 +110,7 @@ void Agent::initializePedestrianValues(){
    setForceFactorObstacle(CONFIG.forceObstacle);
 
    uniform_real_distribution<> dDistribution(0.0, 1.0);
-   //setDistraction(dDistribution(RNG()));
+   setDistraction(dDistribution(RNG()));
 
    angleFrontalCollisionRisk = CONFIG.angleFrontalCollisionRisk;
    riskRadius = CONFIG.riskRadius; // increase risk radius to make ped avoid longer
@@ -707,11 +714,13 @@ void Agent::setAttentionDistance(double attentionDistanceIn){
 }
 
 //New getters
-bool Agent::getIsStopped(){
+bool Agent::getIsStopped()
+{
     return isStopped;
 }
 
-bool Agent::getIsRunning(){
+bool Agent::getIsRunning()
+{
     return isRunning;
 }
 
@@ -1634,3 +1643,4 @@ bool Agent::giveAttentionTo(const Obstacle* obstacle) const
     }
     return false;
 }
+

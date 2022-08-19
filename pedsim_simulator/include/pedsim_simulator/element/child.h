@@ -23,6 +23,10 @@ public:
 //public:
    // double decisionTime;
 
+//Test
+public :
+    string getNom();
+
 };
 
 #endif // CHILD_H

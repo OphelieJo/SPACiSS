@@ -24,11 +24,15 @@ Child::Child()
 
     //assign random maximal speed in m/s with mean 0.435
     normal_distribution<double> distribution(0.435, 0.35);
-
     vmax = distribution(generator_child);
 
+    nomTest="child";
 }
 
+string Child::getNom()
+{
+ return nomTest;
+}
 
 //Methods
 

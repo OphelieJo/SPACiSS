@@ -14,6 +14,9 @@ public:
 public:
    void varyDistraction();
 
+   //Test
+public :
+   string getNom();
 };
 
 #endif // ADOLESCENT_H

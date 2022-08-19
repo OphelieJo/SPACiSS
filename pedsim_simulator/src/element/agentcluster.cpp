@@ -71,12 +71,12 @@ QList<Agent*> AgentCluster::dissolve()
       else if (agentType == Agent::PREADO)
          a = new Preadolescent();
       else if (agentType == Agent::ADO)
-         a = new Adolescent;
+         a = new Adolescent();
       else if (agentType == Agent::ELDER)
-         a = new Elderly;
+         a = new Elderly();
       else if (agentType == Agent::OLDELDER)
          a = new Oldelderly;
-      else a = new Agent;
+      else a = new Agent();
 
     double randomizedX,randomizedY;
 
@@ -108,7 +108,7 @@ QList<Agent*> AgentCluster::dissolve()
         }
         count ++;
     }
-    ROS_INFO_STREAM("type " << a->getType());
+
     a->setPosition(randomizedX, randomizedY);
     // orientation
     a->setvx(cos(theta.toRadian())/100);

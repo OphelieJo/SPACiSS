@@ -23,6 +23,10 @@ protected:
 //protected:
   //double decisionTime;
 
+   //Test
+public :
+   string getNom();
+
 };
 
 #endif // ELDERLY_H

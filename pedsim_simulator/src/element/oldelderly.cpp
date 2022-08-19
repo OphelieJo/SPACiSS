@@ -26,7 +26,13 @@ Oldelderly::Oldelderly()
     normal_distribution<double> distribution(1.05, 0.24);
 
     vmax = distribution(generator_oldeld);
-}
+
+    nomTest = "Oldelder";
+ }
+
+ string Oldelderly::getNom(){
+     return nomTest;
+ }
 
 
 

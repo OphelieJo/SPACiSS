@@ -36,6 +36,7 @@
 #include <pedsim_simulator/element/scenarioelement.h>
 #include <pedsim_simulator/element/obstacle.h>
 #include <pedsim_simulator/element/attractionarea.h>
+#include <string>
 
 #ifndef Q_MOC_RUN
 #include <ros/ros.h>
@@ -262,6 +263,11 @@ public :
    bool getIsStopped();
    bool getIsRunning();
 
+ //For test
+protected :
+   string nomTest;
+public :
+   string getNom();
 
 private:
    void realisticMove(double stepSizeIn);
@@ -303,6 +309,8 @@ public:
    static const double ATTENTION_ANGLE_AV;
    static const double ATTENTION_DISTANCE_AV;
    static const double ANGLE_MAX_AV;
+
+
 
 };
 

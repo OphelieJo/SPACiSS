@@ -26,6 +26,12 @@ Preadolescent::Preadolescent()
    normal_distribution<double> distribution(1.20, 0.303);
 
    vmax = distribution(generator_preado);
+
+   nomTest = "preado";
+}
+
+string Preadolescent::getNom(){
+    return nomTest;
 }
 
 

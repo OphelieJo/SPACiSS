@@ -209,20 +209,35 @@ void Simulator::runSimulation()
         }
       }
 
+      for (AgentCluster *cluster : SCENE.getAgentClusters()){
+          ROS_INFO_STREAM("cluster type" << cluster->getType());
+      }
+
       if (!paused_){
         updateRobotPositionFromTF();
         SCENE.moveAllAgents();
 
-        for (Agent* agent : SCENE.getAgents()) {
-                 //ROS_INFO_STREAM("Agent walking speed " << agent->getVmax());
-                ROS_INFO_STREAM("type " << agent->getType());
-                ROS_INFO_STREAM("Agent run " << agent->getIsRunning());
-                ROS_INFO_STREAM("Agent stop " << agent->getIsStopped());
-                ROS_INFO_STREAM("Agent distraction " << agent->getDistraction());
-                ROS_INFO_STREAM("Agent walking speed " << agent->getVelocity().length());
-                ROS_INFO_STREAM("--------------------------------------------------------------------------");
-         }
 
+
+        for (Agent *agent : SCENE.getAgents()) {
+            ROS_INFO_STREAM(agent->getType() << "," << agent->getNom() << "," << agent->getVelocity().length() << "," << agent->getDistraction());
+//          ROS_INFO_STREAM(agent->getType() << "," << agent->getNom()
+//                          << "," << agent->getVelocity().length() << ","
+//                          << agent->getDistraction() << ","
+//                          << agent->getIsStopped() << ","
+//                          << agent->getIsRunning());
+
+
+
+          //                ROS_INFO_STREAM("Agent run " <<
+          //                agent->getIsRunning()); ROS_INFO_STREAM("Agent
+          //                stop " << agent->getIsStopped());
+          //                ROS_INFO_STREAM("Agent distraction " <<
+          //                agent->getDistraction());
+          //                ROS_INFO_STREAM("Agent walking speed " <<
+          //                agent->getVelocity().length());
+          // ROS_INFO_STREAM("--------------------------------------------------------------------------");
+       }
 
         if(SCENE.getTime() > 1.5*CONFIG.getTimeStepSize()){
            publishAgents();

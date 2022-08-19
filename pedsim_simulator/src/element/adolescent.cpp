@@ -13,14 +13,17 @@
 #include <QSet>
 #include <fstream>
 
+
 Adolescent::Adolescent()
 {
     //initialization with type ADO
     Ped::Tagent::setType(Ped::Tagent::ADO);
-
-
+    nomTest = "ado";
 }
 
+string Adolescent::getNom(){
+    return nomTest;
+}
 
 //Methods
 
