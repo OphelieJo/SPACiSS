@@ -235,27 +235,21 @@ int AgentCluster::getType() const
 void AgentCluster::setType(Ped::Tagent::AgentType typeIn)
 {
     agentType = typeIn;
+    for (int i = 0; i < count; ++i)
+    {
     Agent* a;
-
-  if (agentType == Agent::ELDER)
-  {
-    a = new Elderly();
-  }
-  else if (agentType == Agent::OLDELDER)
-  {
-    a = new Oldelderly();
-  }
-  else if (agentType == Agent::CHILD)
-  {
-    a = new Child();
-  }
-  else if (agentType == Agent::PREADO)
-  {
-    a = new Preadolescent();
-  }
-  else {
-    a = new Agent();
-  }
+    if (agentType == Agent::CHILD)
+       a = new Child();
+    else if (agentType == Agent::PREADO)
+       a = new Preadolescent();
+    else if (agentType == Agent::ADO)
+       a = new Adolescent();
+    else if (agentType == Agent::ELDER)
+       a = new Elderly();
+    else if (agentType == Agent::OLDELDER)
+       a = new Oldelderly;
+    else a = new Agent();
+    }
 
   // inform users
   emit typeChanged(agentType);

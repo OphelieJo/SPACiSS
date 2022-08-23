@@ -35,7 +35,7 @@ void Adolescent::setType(Ped::Tagent::AgentType typeIn)
   normal_distribution<double> speed(1.34, 0.26);
   this->setVmax(speed(RNG()));
   this->SetRadius(0.35);
-  //varyDistraction();
+  varyDistraction();
   initializePedestrianValues();
 
   // inform users

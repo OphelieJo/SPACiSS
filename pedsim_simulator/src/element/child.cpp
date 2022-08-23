@@ -46,7 +46,7 @@ void Child::setType(Ped::Tagent::AgentType typeIn)
   this->setVmax(speed(RNG()));
   this->setForceFactorDesired(0.5);
   this->SetRadius(0.35);
-  //varyDistraction();
+  varyDistraction();
   initializePedestrianValues();
 
   // inform users

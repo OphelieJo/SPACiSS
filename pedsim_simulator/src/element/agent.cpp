@@ -109,8 +109,8 @@ void Agent::initializePedestrianValues(){
    setForceFactorSocial(CONFIG.forceSocial);
    setForceFactorObstacle(CONFIG.forceObstacle);
 
-   uniform_real_distribution<> dDistribution(0.0, 1.0);
-   setDistraction(dDistribution(RNG()));
+   //uniform_real_distribution<> dDistribution(0.0, 1.0);
+   //setDistraction(dDistribution(RNG()));
    //varyDistraction();
 
    angleFrontalCollisionRisk = CONFIG.angleFrontalCollisionRisk;
@@ -956,7 +956,7 @@ void Agent::setType(Ped::Tagent::AgentType typeIn)
      normal_distribution<double> speed(1.34, 0.26);
      this->setVmax(speed(RNG()));
      this->SetRadius(0.35);
-     //varyDistraction();
+     varyDistraction();
      initializePedestrianValues();
   }
   // inform users

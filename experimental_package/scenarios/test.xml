@@ -26,7 +26,7 @@
 
        
 <!-- global test of speed and distraction -->
-   <agent x="19" y="6" n="1" dx="0" dy="0" type="7" purpose="1">
+<!--   <agent x="19" y="6" n="1" dx="0" dy="0" type="7" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
@@ -49,11 +49,11 @@
     <agent x="19" y="20" n="1" dx="0" dy="0" type="0" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
-    </agent>
+    </agent> -->
     
    
 <!-- Speed and distraction test for 1 type -->
-<!--   <agent x="0" y="10" n="9" dx="50" dy="30" type="3" purpose="1">
+   <agent x="0" y="10" n="9" dx="50" dy="30" type="3" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
@@ -84,7 +84,7 @@
    <agent x="0" y="10" n="10" dx="50" dy="30" type="3" purpose="1">
          <addwaypoint id="goal8" />
          <addwaypoint id="goal4" />
-   </agent> -->
+   </agent>
    
    
 

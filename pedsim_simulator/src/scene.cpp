@@ -681,10 +681,12 @@ void Scene::updatePerceptions(){
    if (abs(fmod(roundf(sceneTime*100)/100, 3.0))< 0.01){
       for (Agent* agent : agents){
           if (agent->getType()==Agent::CHILD){
-            agent->setType(Agent::CHILD);
-            agent->varyDistraction();
+            //agent->setType(Agent::CHILD);
+              agent = new Child();
+              agent->varyDistraction();
           }
           if (agent->getType()==Agent::PREADO){
+              //agent->setType(Agent::PREADO);
               agent = new Preadolescent();
               agent->varyDistraction();
             }
