@@ -27,6 +27,21 @@ string Adolescent::getNom(){
 
 //Methods
 
+void Adolescent::setType(Ped::Tagent::AgentType typeIn)
+{
+  // call super class' method
+  Ped::Tagent::setType(typeIn);
+
+  normal_distribution<double> speed(1.34, 0.26);
+  this->setVmax(speed(RNG()));
+  this->SetRadius(0.35);
+  //varyDistraction();
+  initializePedestrianValues();
+
+  // inform users
+  emit typeChanged(typeIn);
+}
+
 void Adolescent::varyDistraction(){
    //Allocation of value for "basic"/low distraction between 0 et 0.5
    uniform_real_distribution<> dDistribution(0, 0.5);

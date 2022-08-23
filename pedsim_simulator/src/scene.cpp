@@ -679,8 +679,29 @@ void Scene::moveAllAgents()
 void Scene::updatePerceptions(){
    // update distraction every 3s
    if (abs(fmod(roundf(sceneTime*100)/100, 3.0))< 0.01){
-      for (Agent* agent : agents)
-         agent->varyDistraction();
+      for (Agent* agent : agents){
+          if (agent->getType()==Agent::CHILD){
+            agent->setType(Agent::CHILD);
+            agent->varyDistraction();
+          }
+          if (agent->getType()==Agent::PREADO){
+              agent = new Preadolescent();
+              agent->varyDistraction();
+            }
+          if (agent->getType()==Agent::ADO){
+              agent = new Adolescent();
+              agent->varyDistraction();
+            }
+          if (agent->getType()==Agent::ELDER){
+              agent = new Elderly();
+              agent->varyDistraction();
+            }
+          if (agent->getType()==Agent::OLDELDER){
+              agent = new Oldelderly();
+              agent->varyDistraction();
+            }
+          else agent->varyDistraction();
+        }
    }
 
    // then update perceived neighbours

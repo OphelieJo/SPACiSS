@@ -109,8 +109,8 @@ void Agent::initializePedestrianValues(){
    setForceFactorSocial(CONFIG.forceSocial);
    setForceFactorObstacle(CONFIG.forceObstacle);
 
-//   uniform_real_distribution<> dDistribution(0.0, 1.0);
-//   setDistraction(dDistribution(RNG()));
+   uniform_real_distribution<> dDistribution(0.0, 1.0);
+   setDistraction(dDistribution(RNG()));
    //varyDistraction();
 
    angleFrontalCollisionRisk = CONFIG.angleFrontalCollisionRisk;
@@ -956,7 +956,7 @@ void Agent::setType(Ped::Tagent::AgentType typeIn)
      normal_distribution<double> speed(1.34, 0.26);
      this->setVmax(speed(RNG()));
      this->SetRadius(0.35);
-     varyDistraction();
+     //varyDistraction();
      initializePedestrianValues();
   }
   // inform users
@@ -1045,18 +1045,19 @@ void Agent::varyDistraction(){
 //   setDistraction(dDistribution(RNG()));
 
    //Allocation of value for "basic"/low distraction between 0 et 0.5
-   uniform_real_distribution<> dDistribution(0, 0.5);
+//   uniform_real_distribution<> dDistribution(0, 0.5);
 
-   //Random draw to dertimine if pedestrian is very distracted (<=13.5)
-   uniform_real_distribution<> dist (0, 100);
-   double randomDist = dist(RNG());
-   if (randomDist > 13.5){
-       setDistraction(dDistribution(RNG()));
-   }
-   else {
-       uniform_real_distribution<> dDistribution(0.5, 1);
-       setDistraction(dDistribution(RNG()));
-   }
+//   //Random draw to dertimine if pedestrian is very distracted (<=13.5)
+//   uniform_real_distribution<> dist (0, 100);
+//   double randomDist = dist(RNG());
+//   if (randomDist > 13.5){
+//       setDistraction(dDistribution(RNG()));
+//   }
+//   else {
+//       uniform_real_distribution<> dDistribution(0.5, 1);
+//       setDistraction(dDistribution(RNG()));
+//   }
+   setDistraction(0.6);
 }
 
 /*
@@ -1086,9 +1087,9 @@ void Agent::updateAttention(double distraction){
 
 //Update the walking speed with distraction : -0.17m/s (distraction = use phone)
 void Agent::updateVmax(double distraction){
-    if (distraction > 0.5) {
-    double distVmax = this->vmax - 0.17;
-    this->setVmax(distVmax);
+    if ((distraction >= 0.5) && (this->vmax>0.17)){
+        double distVmax = this->vmax -= 0.17;
+        this->setVmax(distVmax);
     }
 }
 

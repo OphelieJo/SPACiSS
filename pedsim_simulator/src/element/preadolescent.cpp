@@ -45,7 +45,7 @@ void Preadolescent::setType(Ped::Tagent::AgentType typeIn)
   this->setVmax(speed(RNG()));
   this->setForceFactorDesired(0.5);
   this->SetRadius(0.35);
-  varyDistraction();
+  //varyDistraction();
   initializePedestrianValues();
 
   // inform users
@@ -54,16 +54,17 @@ void Preadolescent::setType(Ped::Tagent::AgentType typeIn)
 
 void Preadolescent::varyDistraction(){
    //Allocation of value for "basic"/low distraction between 0 et 0.5
-   uniform_real_distribution<> dDistribution(0, 0.5);
+//   uniform_real_distribution<> dDistribution(0, 0.5);
 
-   //Random draw to dertimine if preadolescent is very distracted (<=5)
-   uniform_real_distribution<> dist (0, 100);
-   double randomDist = dist(RNG());
-   if (randomDist > 5){
-       setDistraction(dDistribution(RNG()));
-   }
-   else {
-       uniform_real_distribution<> dDistribution(0.5, 1);
-       setDistraction(dDistribution(RNG()));
-   }
+//   //Random draw to dertimine if preadolescent is very distracted (<=5)
+//   uniform_real_distribution<> dist (0, 100);
+//   double randomDist = dist(RNG());
+//   if (randomDist > 5){
+//       setDistraction(dDistribution(RNG()));
+//   }
+//   else {
+//       uniform_real_distribution<> dDistribution(0.5, 1);
+//       setDistraction(dDistribution(RNG()));
+//   }
+    setDistraction(0.4);
 }

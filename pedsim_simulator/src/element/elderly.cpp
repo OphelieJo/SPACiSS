@@ -47,7 +47,7 @@ void Elderly::setType(Ped::Tagent::AgentType typeIn)
   this->setVmax(speed(RNG()));
   this->setForceFactorDesired(0.5);
   this->SetRadius(0.35);
-  varyDistraction();
+  //varyDistraction();
   initializePedestrianValues();
 
   // inform users
@@ -55,7 +55,6 @@ void Elderly::setType(Ped::Tagent::AgentType typeIn)
 }
 
 void Elderly::varyDistraction(){
-
    //Allocation of value for "basic"/low distraction between 0 et 0.5
    uniform_real_distribution<> dDistribution(0, 0.5);
 

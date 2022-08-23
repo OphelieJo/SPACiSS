@@ -66,7 +66,7 @@ QList<Agent*> AgentCluster::dissolve()
   for (int i = 0; i < count; ++i)
   {
       Agent* a;
-      if (agentType == Ped::Tagent::CHILD)
+      if (agentType == Agent::CHILD)
          a = new Child();
       else if (agentType == Agent::PREADO)
          a = new Preadolescent();
@@ -235,25 +235,26 @@ int AgentCluster::getType() const
 void AgentCluster::setType(Ped::Tagent::AgentType typeIn)
 {
     agentType = typeIn;
+    Agent* a;
 
   if (agentType == Agent::ELDER)
   {
-    Agent* a = new Elderly();
+    a = new Elderly();
   }
   else if (agentType == Agent::OLDELDER)
   {
-    Agent* a = new Oldelderly();
+    a = new Oldelderly();
   }
   else if (agentType == Agent::CHILD)
   {
-    Agent* a = new Child();
+    a = new Child();
   }
   else if (agentType == Agent::PREADO)
   {
-    Agent* a = new Preadolescent();
+    a = new Preadolescent();
   }
   else {
-    Agent* a = new Agent();
+    a = new Agent();
   }
 
   // inform users
