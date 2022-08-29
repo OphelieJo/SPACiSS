@@ -243,7 +243,7 @@ public:
   void setPurpose(AgentPurpose purposeIn);
   void setDistraction(double);
   double getDistraction() const;
-  void varyDistraction();
+  //void varyDistraction();
   double getVisionArea() const;
   void setVmax(double);
   void setRunVmax(double);
@@ -257,17 +257,24 @@ public:
    QList<const Agent*> updatePerceivedNeighbors();
    void updatePerceivedObstacles();
 
+   //To "void simple" from virtual void
+   virtual void varyDistraction();
 
  //Add getter of isStopped and isRunning to access it, especially in processCarInformation of Elderly
 public :
    bool getIsStopped();
    bool getIsRunning();
+   double getAgentRadius() const;
+
+
 
  //For test
 protected :
    string nomTest;
+   string processType;
 public :
    string getNom();
+   string getProcessType();
 
 private:
    void realisticMove(double stepSizeIn);
@@ -276,7 +283,7 @@ private:
 //   void initializePedestrianValues();
    void updateVision(double);
    void updateAttention(double);
-   void processCarInformation(const Agent* car);
+   void virtual processCarInformation(const Agent* car);
    Ped::Tvector carAcceleration(Ped::Tvector);
    bool isEmergencyStopNeeded();
 //   void wantStop();

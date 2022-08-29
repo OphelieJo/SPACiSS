@@ -725,6 +725,11 @@ bool Agent::getIsRunning()
     return isRunning;
 }
 
+double Agent::getAgentRadius() const
+{
+    return agentRadius;
+}
+
 
 void Agent::moveToNextPositionFromFile()
 {
@@ -970,10 +975,9 @@ Agent::AgentPurpose Agent::getPurpose() const
 
 void Agent::setPurpose(AgentPurpose purposeIn)
 {
-   this->purpose = purposeIn;
+    this->purpose = purposeIn;
 
-   if(this->type != ROBOT && this->type != CHILD && this->type != PREADO && this->type != ADO && this->type != ELDER && this->type != OLDELDER)
-   {
+   if(this->type != ROBOT && this->type != CHILD && this->type != PREADO && this->type != ADO && this->type != ELDER && this->type != OLDELDER) {
       normal_distribution<double> distribution(1.34, 0.26);
       normal_distribution<double> distributionWork(1.55, 0.26);
       normal_distribution<double> distributionLeisure(1.13, 0.26);
@@ -988,11 +992,11 @@ void Agent::setPurpose(AgentPurpose purposeIn)
           default:
              this->setVmax(distribution(RNG()));
       }
-   }
-
+    }
    // inform users
    emit purposeChanged(purposeIn);
 }
+
 
 bool Agent::isPerceivingAV() const{
    return perceiveAV;
@@ -1041,23 +1045,20 @@ void Agent::setDistraction(double distractionIn){
 void Agent::varyDistraction(){
    if(type == ROBOT)
       return;
-//   uniform_real_distribution<> dDistribution(0, 1);
-//   setDistraction(dDistribution(RNG()));
 
    //Allocation of value for "basic"/low distraction between 0 et 0.5
-//   uniform_real_distribution<> dDistribution(0, 0.5);
+   uniform_real_distribution<> dDistribution(0, 0.5);
 
-//   //Random draw to dertimine if pedestrian is very distracted (<=13.5)
-//   uniform_real_distribution<> dist (0, 100);
-//   double randomDist = dist(RNG());
-//   if (randomDist > 13.5){
-//       setDistraction(dDistribution(RNG()));
-//   }
-//   else {
-//       uniform_real_distribution<> dDistribution(0.5, 1);
-//       setDistraction(dDistribution(RNG()));
-//   }
-   setDistraction(0.6);
+   //Random draw to dertimine if pedestrian is very distracted (<=13.5)
+   uniform_real_distribution<> dist (0, 100);
+   double randomDist = dist(RNG());
+   if (randomDist > 13.5){
+       setDistraction(dDistribution(RNG()));
+   }
+   else {
+       uniform_real_distribution<> dDistribution(0.5, 1);
+       setDistraction(dDistribution(RNG()));
+   }
 }
 
 /*
@@ -1398,8 +1399,11 @@ void Agent::processCarInformation(const Agent* car)
 //                     this->wantStop();
 //                  else {
                      //normal
-                     int a = rand()%2;
-                     if(a == 1){
+                   uniform_real_distribution<> decision (0, 100);
+                   double randomDecision = decision(RNG());
+                      if (randomDecision > 73){
+//                     int a = rand()%2;
+//                     if(a == 1){
                         this->wantStop();
                      }
                      else{
@@ -1480,14 +1484,12 @@ void Agent::processCarInformation(const Agent* car)
          socialforce = -car->v.normalized() + physicalForce();
    }
 
-   if (isRunning)
-       ROS_INFO_STREAM('ruun');
-   else if (isSteppingBack)
-       ROS_INFO_STREAM('stepback');
-   else if (isStopped){
-        if(ttc<ttcImminent)
-             ROS_INFO_STREAM('stop');
+  processType = "agenttt";
 }
+
+string Agent::getProcessType()
+{
+    return processType;
 }
 
 /*

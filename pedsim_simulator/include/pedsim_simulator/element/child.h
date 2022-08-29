@@ -20,6 +20,9 @@ public:
 //    double getDecisonTime() const;
 //    void setDecisionTime(double);
 
+protected:
+   void processCarInformation(const Agent* car);
+
     //Attributes
 //public:
    // double decisionTime;
@@ -27,6 +30,7 @@ public:
 //Test
 public :
     string getNom();
+    string getProcessType();
 
 };
 

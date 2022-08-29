@@ -220,12 +220,12 @@ void Simulator::runSimulation()
 
 
         for (Agent *agent : SCENE.getAgents()) {
-            ROS_INFO_STREAM(agent->getType() << "," << agent->getNom() << "," << agent->getVelocity().length() << "," << agent->getDistraction());
-//          ROS_INFO_STREAM(agent->getType() << "," << agent->getNom()
-//                          << "," << agent->getVelocity().length() << ","
-//                          << agent->getDistraction() << ","
-//                          << agent->getIsStopped() << ","
-//                          << agent->getIsRunning());
+            //ROS_INFO_STREAM(agent->getType() << "," << agent->getNom() << "," << agent->getVelocity().length() << "," << agent->getDistraction());
+          ROS_INFO_STREAM(agent->getType() << "," << agent->getNom()
+                          << "," << agent->getVelocity().length() << ","
+                          << agent->getDistraction() << ","
+                          << agent->getIsStopped() << ","
+                          << agent->getIsRunning() << "," << agent->getProcessType());
 
 
 

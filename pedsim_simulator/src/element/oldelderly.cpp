@@ -23,9 +23,10 @@ Oldelderly::Oldelderly()
    Ped::Tagent::setType(Ped::Tagent::OLDELDER);
 
     //assign random maximal speed in m/s with mean 1.05
-    normal_distribution<double> distribution(1.05, 0.24);
+//    normal_distribution<double> distribution(1.05, 0.24);
 
-    vmax = distribution(generator_oldeld);
+//    vmax = distribution(generator_oldeld);
+   vmax=1.30;
 
     nomTest = "Oldelder";
  }
@@ -40,8 +41,9 @@ Oldelderly::Oldelderly()
    // call super class' method
    Ped::Tagent::setType(typeIn);
 
-   normal_distribution<double> speed(1.05, 0.24);
-   this->setVmax(speed(RNG()));
+//   normal_distribution<double> speed(1.05, 0.24);
+//   this->setVmax(speed(RNG()));
+   vmax=1.30;
    this->setForceFactorDesired(0.5);
    this->SetRadius(0.35);
    varyDistraction();

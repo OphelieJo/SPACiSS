@@ -39,10 +39,7 @@ string Elderly::getNom(){
 //Methods
 
 void Elderly::setType(Ped::Tagent::AgentType typeIn)
-{
-  // call super class' method
-  Ped::Tagent::setType(typeIn);
-
+{   
   normal_distribution<double> speed(1.29, 0.24);
   this->setVmax(speed(RNG()));
   this->setForceFactorDesired(0.5);
@@ -71,14 +68,14 @@ void Elderly::varyDistraction(){
 }
 
 
-void Elderly::processCarInformation(const Elderly* car)
+void Elderly::processCarInformation(const Agent* car)
 {
    // Physical collision radius
-   double collisionRadius =  this->agentRadius + car->agentRadius;
+   double collisionRadius =  this->agentRadius + car->getAgentRadius();
    // Danger radius
-   double radiusDanger = this->agentRadius + car->agentRadius + dangerRadius;
+   double radiusDanger = this->agentRadius + car->getAgentRadius() + dangerRadius;
    // Risk radius
-   double radiusRisk =  this->agentRadius + car->agentRadius + riskRadius;
+   double radiusRisk =  this->agentRadius + car->getAgentRadius() + riskRadius;
 
    // AV speed
    double carvx = car->getvx();
@@ -137,9 +134,9 @@ void Elderly::processCarInformation(const Elderly* car)
             this->isStopped = false;
             this->isRunning = false;
 
-            Ped::Tvector diffDirection = (pedPos-car->p).normalized();
-            Ped::Tangle angle = car->v.angleTo(diffDirection);
-            Ped::Tvector turnVector = angle.sign() * car->v.leftNormalVector().normalized();
+            Ped::Tvector diffDirection = (pedPos-car->getPosition()).normalized();
+            Ped::Tangle angle = car->getVelocity().angleTo(diffDirection);
+            Ped::Tvector turnVector = angle.sign() * car->getVelocity().leftNormalVector().normalized();
             socialforce = turnVector + physicalForce();
            // ROS_INFO_STREAM(id<<"tttuuuurn");
          }
@@ -148,8 +145,8 @@ void Elderly::processCarInformation(const Elderly* car)
             double margin = 0.0;
             if(car->getVelocity().length()<0.2)
                hesitationThreshold = 0.8;
-            Ped::Tvector carNearestSide = Ped::Tvector(car->p.x + (car->getRadius((Ped::Tvector(carvx, carvy).angleTo(pedPos-car->p)),margin) * (pedPos-car->p).normalized()).x/*(car->getVelocity().normalized().x)*/,
-                                  car->p.y + (car->getRadius((Ped::Tvector(carvx, carvy).angleTo(pedPos-car->p)),margin) * (pedPos-car->p).normalized()).y);
+            Ped::Tvector carNearestSide = Ped::Tvector(car->getPosition().x + (car->getRadius((Ped::Tvector(carvx, carvy).angleTo(pedPos-car->getPosition())),margin) * (pedPos-car->getPosition()).normalized()).x/*(car->getVelocity().normalized().x)*/,
+                                  car->getPosition().y + (car->getRadius((Ped::Tvector(carvx, carvy).angleTo(pedPos-car->getPosition())),margin) * (pedPos-car->getPosition()).normalized()).y);
             // Bearing angle from ped point of view
             Ped::Tangle bearingAngle = pedVelo.angleTo(carNearestSide - pedPos);
             double bearingAngleDeriv = (carNearestSide - pedPos).angleTo((carNearestSide - pedPos)+(Ped::Tvector(carvx, carvy) - pedVelo)).toRadian();
@@ -157,8 +154,8 @@ void Elderly::processCarInformation(const Elderly* car)
             Ped::Tangle bearingAngleC = (Ped::Tvector(carvx, carvy).angleTo(pedPos-carNearestSide));
             double bearingAngleDerivC = (pedPos-carNearestSide).angleTo((pedPos-carNearestSide)+(pedVelo-Ped::Tvector(carvx, carvy))).toRadian();
 
-            double cx = ((this->getx()+pedIdealVelocity.x*ttc)*this->agentRadius + (car->getx()+carvx*ttc)*car->agentRadius)/radiusDanger;
-            double cy = ((this->gety()+pedIdealVelocity.y*ttc)*this->agentRadius + (car->gety()+carvy*ttc)*car->agentRadius)/radiusDanger;
+            double cx = ((this->getx()+pedIdealVelocity.x*ttc)*this->agentRadius + (car->getx()+carvx*ttc)*car->getAgentRadius())/radiusDanger;
+            double cy = ((this->gety()+pedIdealVelocity.y*ttc)*this->agentRadius + (car->gety()+carvy*ttc)*car->getAgentRadius())/radiusDanger;
             Ped::Tvector collisionPoint = Ped::Tvector(cx, cy);
             Ped::Tvector pedToColl = collisionPoint - Ped::Tvector(this->getx()+pedIdealVelocity.x * ttc,this->gety()+pedIdealVelocity.y * ttc);
 
@@ -207,8 +204,11 @@ void Elderly::processCarInformation(const Elderly* car)
 //                     this->wantStop();
 //                  else {
                      //normal
-                     int a = rand()%4; //Elderly run 27% when the have to take decision
-                     if(a != 0){ //For value 1, 2 and 3 they stop, that is 75% of value
+                   uniform_real_distribution<> decision (0, 100);
+                   double randomDecision = decision(RNG());
+                      if (randomDecision >27){
+//                     int a = rand()%4; //Elderly run 27% when the have to take decision
+//                     if(a != 0){ //For value 1, 2 and 3 they stop, that is 75% of value
                         this->wantStop();
                      }
                      else{ //For value 0 they run, taht is the 25% remaining
@@ -286,15 +286,12 @@ void Elderly::processCarInformation(const Elderly* car)
           socialforce = physicalForce();
           desiredforce = (-v/relaxationTime);
       }else
-         socialforce = -car->v.normalized() + physicalForce();
+         socialforce = -car->getVelocity().normalized() + physicalForce();
    }
-
-   if (isRunning)
-       ROS_INFO_STREAM('run');
-   else if (isSteppingBack)
-       ROS_INFO_STREAM('stepback');
-   else if (isStopped){
-        if(ttc<ttcImminent)
-             ROS_INFO_STREAM('stop');
+   processType = "elderlyyyy";
 }
+
+string Elderly::getProcessType()
+{
+    return processType;
 }

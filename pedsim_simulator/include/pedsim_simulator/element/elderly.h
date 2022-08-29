@@ -18,7 +18,7 @@ public:
 //   void setDecisionTime(double);
 
 protected:
-   void processCarInformation(const Elderly* car);
+   void processCarInformation(const Agent* car);
 
    //Attributes
 //protected:
@@ -27,6 +27,7 @@ protected:
    //Test
 public :
    string getNom();
+   string getProcessType();
 
 };
 

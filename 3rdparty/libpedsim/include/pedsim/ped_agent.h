@@ -3,6 +3,7 @@
 // Copyright (c) 2003 - 2012 by Christian Gloor
 //
 
+#include <string>
 #ifndef _ped_agent_h_
 #define _ped_agent_h_ 1
 
