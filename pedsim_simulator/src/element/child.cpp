@@ -42,7 +42,7 @@ void Child::setType(Ped::Tagent::AgentType typeIn)
   // call super class' method
   Ped::Tagent::setType(typeIn);
 
-  normal_distribution<double> speed(0.435, 0.35); //0.435, 0.35
+  normal_distribution<double> speed(0.435, 0.35);
   this->setVmax(speed(RNG()));
   this->setForceFactorDesired(0.5);
   this->SetRadius(0.35);

@@ -298,7 +298,7 @@ private:
 
    //New update for walking speed (used to modulate walking speed depending on distraction)
  private :
-   void updateVmax(double);
+   void updateVmax(double, double);
 
 
 public:
