@@ -1060,6 +1060,7 @@ void Agent::varyDistraction(){
        uniform_real_distribution<> dDistribution(0.5, 1);
        setDistraction(dDistribution(RNG()));
    }
+   processType = "Aggggeeeeennnttt";
 }
 
 /*
@@ -1492,7 +1493,7 @@ void Agent::processCarInformation(const Agent* car)
          socialforce = -car->v.normalized() + physicalForce();
    }
 
-  processType = "agenttt";
+  //processType = "agenttt";
 }
 
 string Agent::getProcessType()

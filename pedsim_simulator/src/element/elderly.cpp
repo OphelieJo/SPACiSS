@@ -65,6 +65,7 @@ void Elderly::varyDistraction(){
        uniform_real_distribution<> dDistribution(0.5, 1);
        setDistraction(dDistribution(RNG()));
    }
+   processType = "elderlyyyy";
 }
 
 
@@ -288,7 +289,7 @@ void Elderly::processCarInformation(const Agent* car)
       }else
          socialforce = -car->getVelocity().normalized() + physicalForce();
    }
-   processType = "elderlyyyy";
+
 }
 
 string Elderly::getProcessType()

@@ -43,7 +43,7 @@ void Child::setType(Ped::Tagent::AgentType typeIn)
   Ped::Tagent::setType(typeIn);
 
   normal_distribution<double> speed(0.435, 0.35);
-  this->setVmax(speed(RNG()));
+  this->setVmax(max(0.1,speed(RNG())));
   this->setForceFactorDesired(0.5);
   this->SetRadius(0.35);
   varyDistraction();
@@ -67,6 +67,7 @@ void Child::varyDistraction(){
        uniform_real_distribution<> dDistribution(0.5, 1);
        setDistraction(dDistribution(RNG()));
    }
+   processType = "childdddddddddddddddddddd";
 }
 
 void Child::processCarInformation(const Agent* car)
@@ -281,10 +282,10 @@ void Child::processCarInformation(const Agent* car)
           }else
              socialforce = -car->getVelocity().normalized() + physicalForce();
        }
-       processType = "Childdd";
+       //processType = "Childdd";
     }
 
     string Child::getProcessType()
     {
-        return processType;
+
     }
