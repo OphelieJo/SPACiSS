@@ -218,7 +218,7 @@ For now, the social force is configured to have the AV go straight to its destin
 | n  |  Number of agents, to change crowd density | int
 | dx (opt if n=1) | Dispersion of agents along x axis  | double
 | dy (opt if n=1) | Dispersion of agents along y axis  | double
-| type (opt, default 0) | Agent type (affects the max speed and force desired for elderly, affects the max speed/size/max rotation angle/force social and force obstacle for robot)  | 0: adult / 1: child (unused) / 2: robot (=AV) / 3: elder / 4: immob (stationary)
+| type (opt, default 0) | Agent type (affects the max speed and force desired for elderly, affects the max speed/size/max rotation angle/force social and force obstacle for robot)  | 0: adult / 1: child / 2: robot (=AV) / 3: elder / 4: immob (stationary) / 7: ado / 8: Preado / 9: Olelder
 | purpose (opt, default 0) | Trip purpose of agent (affects the max speed except for robot and elderly)  | 0: unknown / 1: work / 2: leisure
 | addwaypoint | id  | id of a waypoint
 
