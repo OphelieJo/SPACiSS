@@ -246,8 +246,10 @@ For now, the social force is configured to have the AV go straight to its destin
 
 <br/>
  
-### agent specificities
+## Agent Specificities
+
 | Class | vmax (standard deviation) | Percentage of distraction | Percentage of run decision | Decision time | Methods
+| ------------- | ------------- | ------------- |
 | Agent | 1.34 (0.26) | 13.5 | 73 | 0.66 |
 | Child | 0.43 (0.35) | 2 | 63.5 | 
 | Preadolescent | 1.23 (0.31) | 5 | 63.5 |
