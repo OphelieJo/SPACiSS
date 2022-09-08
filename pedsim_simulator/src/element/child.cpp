@@ -22,8 +22,8 @@ Child::Child()
     //initialization with type CHILD
    Ped::Tagent::setType(Ped::Tagent::CHILD);
 
-    //assign random maximal speed in m/s with mean 0.435
-    normal_distribution<double> distribution(0.435, 0.35);
+    //assign random maximal speed in m/s with mean 0.43
+    normal_distribution<double> distribution(0.43, 0.35);
     vmax = distribution(generator_child);
 
     nomTest="child";

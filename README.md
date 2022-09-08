@@ -247,7 +247,15 @@ For now, the social force is configured to have the AV go straight to its destin
 <br/>
  
 ### agent specificities
+| Class | vmax (standard deviation) | Percentage of distraction | Percentage of run decision | Decision time | Methods
+| Agent | 1.34 (0.26) | 13.5 | 73 | 0.66 |
+| Child | 0.43 (0.35) | 2 | 63.5 | 
+| Preadolescent | 1.23 (0.31) | 5 | 63.5 |
+| Adolescent | 1.34 (0.26) | 20 | 73 | 0.66 |
+| Elderly | 1.29 (0.24) | 0.5 | 27 | 0.88 |
+| Oldelderly | 1.05 (0.24) | 0.5 | 27 | 1.45 |
 
+<br/>
 
 ## Reference papers
 Manon Prédhumeau. 2021. Simulating Realistic Pedestrian Behaviors in the Context of Autonomous Vehicles in Shared Spaces: Doctoral Consortium. In Proc. of the 20th International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2021), May 3–7, 2021, IFAAMAS, 3 pages.

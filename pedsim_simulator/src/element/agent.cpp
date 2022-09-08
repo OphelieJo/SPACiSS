@@ -1090,12 +1090,8 @@ void Agent::updateAttention(double distraction){
 
 //Update the walking speed with distraction : -0.17m/s (distraction = use phone)
 void Agent::updateVmax(double distraction, double distractionPrec){
-    //double vmaxPrec; //vmax before distraction
-    double distVmax;
     if ((distractionPrec <0.5) && (distraction >= 0.5) && (this->vmax>0.17)){
-       // vmaxPrec = this->vmax;
-        distVmax = this->vmax -= 0.17;
-        this->setVmax(distVmax);
+        this->setVmax(this->vmax -= 0.17);
     }
     if ((distractionPrec >=0.5) && (distraction < 0.5)){
 
