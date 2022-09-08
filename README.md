@@ -248,14 +248,14 @@ For now, the social force is configured to have the AV go straight to its destin
  
 ## Agent Specificities
 
-| Class | vmax (standard deviation) | Percentage of distraction | Percentage of run decision | Decision time | Methods
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Agent | 1.34 (0.26) | 13.5 | 73 | 0.66 | bb
-| Child | 0.43 (0.35) | 2 | 63.5 | bb
-| Preadolescent | 1.23 (0.31) | 5 | 63.5 | bb
-| Adolescent | 1.34 (0.26) | 20 | 73 | 0.66 | bb
-| Elderly | 1.29 (0.24) | 0.5 | 27 | 0.88 | bb
-| Oldelderly | 1.05 (0.24) | 0.5 | 27 | 1.45 | bb
+| Class | Mother class | vmax (standard deviation) | Percentage of distraction | Percentage of run decision | Decision time | Methods modified with heritage 
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Agent | 1.34 (0.26) | 13.5 | 73 | 0.66 | na 
+| Child | Agent | 0.43 (0.35) | 2 | 63.5 | à rechercher | void setType(Ped::Tagent::Type) / void varyDistraction(double) / voir processCarInformation(const Agent* car) 
+| Preadolescent | Child | 1.23 (0.31) | 5 | 63.5 | à rechercher | void setType(Ped::Tagent::Type) / void varyDistraction(double) 
+| Adolescent | Agent | 1.34 (0.26) | 20 | 73 | 0.66 | void setType(Ped::Tagent::Type) / void varyDistraction(double) 
+| Elderly | Agent | 1.29 (0.24) | 0.5 | 27 | 0.88 | void setType(Ped::Tagent::Type) / void varyDistraction(double) / voir processCarInformation(const Agent* car) 
+| Oldelderly | Elderly | 1.05 (0.24) | 0.5 | 27 | 1.45 | void setType(Ped::Tagent::Type) / voir processCarInformation(const Agent* car) 
 
 <br/>
 
