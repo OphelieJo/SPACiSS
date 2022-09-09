@@ -14,8 +14,7 @@ public:
 public:
    void setType(Ped::Tagent::AgentType typeIn);
    void varyDistraction();
-//   double getDecisonTime() const;
-//   void setDecisionTime(double);
+   void computeForces();
 
 protected:
    void processCarInformation(const Agent* car);

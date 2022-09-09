@@ -148,7 +148,9 @@ void Agent::computeForces()
      if (neighbor->id == id)
         continue;
      if (neighbor->getType() == ROBOT){
+         if (decisionTime >= 0.47)
          processCarInformation(neighbor);
+         else decisionTime += CONFIG.getTimeStepSize();
 
          // is agent colliding with AV ?
          Ped::Tvector diff = neighbor->p - p;
@@ -1211,6 +1213,8 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
   QList<const Agent*> perceived;
   set<const Ped::Tagent*> neighborsSet;
 
+  bool precPerceivedAV = this -> perceiveAV;
+
   this->perceiveAV = false;
   double angle = getVisionAngleDeg();
   double visionDistance = getVisionDistance();
@@ -1224,9 +1228,10 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
     if (perceiveAgent(upNeighbor, visionDistance, angle)){
         perceived.append(upNeighbor);
         neighborsSet.insert(upNeighbor);
-        if (upNeighbor->getType() == ROBOT){
+        if (upNeighbor->getType() == ROBOT && precPerceivedAV == false){
            // ROS_INFO_STREAM("PEDESTRIAN ID " << getId() << "PERCEIVES A CAR ID" << neighbor->getId());
             this->perceiveAV = true;
+            decisionTime = 0.0;
         }
     }
   }

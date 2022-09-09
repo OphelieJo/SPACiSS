@@ -69,6 +69,51 @@ void Elderly::varyDistraction(){
 }
 
 
+void Elderly::computeForces()
+{
+  // update forces
+  desiredforce = desiredForce();
+  if (forceFactorSocial > 0)
+     socialforce = socialForce();
+  if (forceFactorObstacle > 0)
+    obstacleforce = obstacleForce();
+  myforce = myForce(desiredDirection);
+
+  collideAV = false;
+  for (auto neighbor : getNeighbors())
+  {
+     if (neighbor->getId() == id)
+        continue;
+     if (neighbor->getType() == ROBOT){
+         //verif decisionTime
+         if (decisionTime >= 0.88)
+         processCarInformation(neighbor);
+         else decisionTime += CONFIG.getTimeStepSize();
+
+         // is agent colliding with AV ?
+         Ped::Tvector diff = neighbor->getPosition() - p;
+         double physicalDistance = diff.length() -
+               (this->getRadius(v.angleTo(diff),0.0) + neighbor->getRadius(neighbor->getWalkingDirection().angleTo(-diff),0.0));
+           if(physicalDistance <= 0.0){
+              collideAV = true;
+              v = physicalForce() + obstacleforce;
+              ROS_INFO_STREAM(id << " COLLIDE");
+           }
+      }
+   }
+
+  if (!perceiveAV) {
+     this->isRunning = false;
+     this->isStopped = false;
+     this->isSteppingBack = false;
+  }
+
+  if(type==ROBOT){
+     this->disableForce("Random");
+  }
+}
+
+
 void Elderly::processCarInformation(const Agent* car)
 {
    // Physical collision radius

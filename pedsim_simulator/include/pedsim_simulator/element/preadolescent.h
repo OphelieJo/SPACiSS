@@ -16,6 +16,7 @@ public:
 public:
    void setType(Ped::Tagent::AgentType typeIn);
    void varyDistraction();
+   void computeForces();
 
 
    //Test

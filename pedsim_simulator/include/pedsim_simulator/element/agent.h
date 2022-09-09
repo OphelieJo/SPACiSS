@@ -135,7 +135,7 @@ public:
 public:
   void updateState();
   void move(double h);
-  void computeForces();
+  virtual void computeForces();
   Ped::Tvector desiredForce();
   Ped::Tvector socialForce() const;
   Ped::Tvector physicalForce() const;
@@ -205,6 +205,7 @@ protected:
   double ttcUp;
   double ttcImminent;
   double hesitationThreshold;
+  double decisionTime;
 
 
 protected:
