@@ -45,11 +45,11 @@
     <agent x="20" y="14" n="1" dx="0" dy="0" type="1" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
-    </agent>
+    </agent> 
     <agent x="19" y="20" n="1" dx="0" dy="0" type="0" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
-    </agent> -->
+    </agent>-->
     
    
 <!-- Speed and distraction test for 1 type -->
@@ -88,7 +88,7 @@
     
 
 <!-- individual test for run and stop decision -->
-   <agent x="20" y="0" n="1" dx="0" dy="0" type="0" purpose="1">
+<!--   <agent x="25" y="0" n="1" dx="0" dy="0" type="0" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
@@ -135,57 +135,57 @@
     <agent x="10" y="14" n="1" dx="0" dy="0" type="9" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
-    </agent>
+    </agent> -->
     
     
-    <agent x="30" y="20" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="30" y="20" n="1" dx="0" dy="0" type="3" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="30" y="22" n="1" dx="0" dy="0" type="0" purpose="1">
+   <agent x="30" y="22" n="1" dx="0" dy="0" type="3" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="30" y="24" n="1" dx="0" dy="0" type="0" purpose="1">
+   <agent x="30" y="24" n="1" dx="0" dy="0" type="3" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="30" y="26" n="1" dx="0" dy="0" type="0" purpose="1">
+<!--   <agent x="30" y="26" n="1" dx="0" dy="0" type="3" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="30" y="28" n="1" dx="0" dy="0" type="0" purpose="1">
+   <agent x="30" y="28" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>
-    <agent x="30" y="30" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="30" y="30" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal1" />
           <addwaypoint id="goal6" />
     </agent>
-    <agent x="0" y="20" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="0" y="20" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
     </agent>
-   <agent x="0" y="22" n="1" dx="0" dy="0" type="0" purpose="1">
+   <agent x="0" y="22" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
     </agent>
-    <agent x="0" y="24" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="0" y="24" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
     </agent>
-     <agent x="0" y="26" n="1" dx="0" dy="0" type="0" purpose="1">
+     <agent x="0" y="26" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
     </agent>
-    <agent x="0" y="28" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="0" y="28" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
     </agent>
-    <agent x="0" y="30" n="1" dx="0" dy="0" type="0" purpose="1">
+    <agent x="0" y="30" n="1" dx="0" dy="0" type="3" purpose="1">
           <addwaypoint id="goal2" />
           <addwaypoint id="goal8" />
-    </agent>
+    </agent> -->
 
 
   <agent x="15" y="-20" theta="1.57" n="1" type="2"> <!-- robot -->

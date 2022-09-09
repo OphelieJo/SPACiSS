@@ -276,6 +276,7 @@ protected :
 public :
    string getNom();
    string getProcessType();
+   double getDecisionTime();
 
 private:
    void realisticMove(double stepSizeIn);

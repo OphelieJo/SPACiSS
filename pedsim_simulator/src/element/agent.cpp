@@ -148,9 +148,11 @@ void Agent::computeForces()
      if (neighbor->id == id)
         continue;
      if (neighbor->getType() == ROBOT){
-         if (decisionTime >= 0.47)
+         if (decisionTime >= 0.47){
          processCarInformation(neighbor);
-         else decisionTime += CONFIG.getTimeStepSize();
+         }
+
+         decisionTime += CONFIG.getTimeStepSize();
 
          // is agent colliding with AV ?
          Ped::Tvector diff = neighbor->p - p;
@@ -732,6 +734,10 @@ double Agent::getAgentRadius() const
     return agentRadius;
 }
 
+double Agent::getDecisionTime()
+{
+    return decisionTime;
+}
 
 void Agent::moveToNextPositionFromFile()
 {
@@ -1062,7 +1068,6 @@ void Agent::varyDistraction(){
        uniform_real_distribution<> dDistribution(0.5, 1);
        setDistraction(dDistribution(RNG()));
    }
-   processType = "Aggggeeeeennnttt";
 }
 
 /*
@@ -1275,6 +1280,7 @@ bool Agent::perceiveAgent(const Agent* perceived, double distanceMax, double ang
 
 void Agent::processCarInformation(const Agent* car)
 {
+    processType = "agenttt";
    // Physical collision radius
    double collisionRadius =  this->agentRadius + car->agentRadius;
    // Danger radius
@@ -1494,7 +1500,7 @@ void Agent::processCarInformation(const Agent* car)
          socialforce = -car->v.normalized() + physicalForce();
    }
 
-  //processType = "agenttt";
+
 }
 
 string Agent::getProcessType()
