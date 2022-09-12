@@ -13,15 +13,14 @@ public:
    //Methods
 public:
    void setType(Ped::Tagent::AgentType typeIn);
-   void varyDistraction();
-   void computeForces();
+   virtual double getDistractionNeeded() const;
+   virtual double getDecisionRunNeeded() const;
+   virtual double getDecisionTimeNeeded() const;
 
-protected:
-   void processCarInformation(const Agent* car);
-
-   //Attributes
-//protected:
-  //double decisionTime;
+//Const
+   static const double DISTRACTION_NEEDED;
+   static const double DECISION_RUN_NEEDED;
+   static const double DECISION_TIME_NEEDED;
 
    //Test
 public :

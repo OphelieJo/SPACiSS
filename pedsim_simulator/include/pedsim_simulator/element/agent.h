@@ -135,7 +135,7 @@ public:
 public:
   void updateState();
   void move(double h);
-  virtual void computeForces();
+  void computeForces();
   Ped::Tvector desiredForce();
   Ped::Tvector socialForce() const;
   Ped::Tvector physicalForce() const;
@@ -244,7 +244,7 @@ public:
   void setPurpose(AgentPurpose purposeIn);
   void setDistraction(double);
   double getDistraction() const;
-  //void varyDistraction();
+  void varyDistraction();
   double getVisionArea() const;
   void setVmax(double);
   void setRunVmax(double);
@@ -258,14 +258,14 @@ public:
    QList<const Agent*> updatePerceivedNeighbors();
    void updatePerceivedObstacles();
 
-   //To "void simple" from virtual void
-   virtual void varyDistraction();
-
- //Add getter of isStopped and isRunning to access it, especially in processCarInformation of Elderly
+ //Add getter
 public :
    bool getIsStopped();
    bool getIsRunning();
    double getAgentRadius() const;
+   virtual double getDecisionRunNeeded() const;
+   virtual double getDecisionTimeNeeded() const;
+   virtual double getDistractionNeeded() const;
 
 
 
@@ -285,7 +285,7 @@ private:
 //   void initializePedestrianValues();
    void updateVision(double);
    void updateAttention(double);
-   void virtual processCarInformation(const Agent* car);
+   //void processCarInformation(const Agent* car);
    Ped::Tvector carAcceleration(Ped::Tvector);
    bool isEmergencyStopNeeded();
 //   void wantStop();
@@ -297,6 +297,7 @@ private:
    void initializePedestrianValues();
    void wantStop();
    void wantRun();
+   void processCarInformation(const Agent* car);
 
    //New update for walking speed (used to modulate walking speed depending on distraction)
  private :
@@ -319,8 +320,10 @@ public:
    static const double ATTENTION_DISTANCE_AV;
    static const double ANGLE_MAX_AV;
 
-
-
+   //add const for decision of running and decision time
+   static const double DISTRACTION_NEEDED;
+   static const double DECISION_RUN_NEEDED;
+   static const double DECISION_TIME_NEEDED;
 };
 
 #endif

@@ -12,7 +12,10 @@ public:
     //Methods
 public :
     void setType(Ped::Tagent::AgentType typeIn);
-    void computeForces();
+    virtual double getDecisionTimeNeeded() const;
+
+//Const
+    static const double DECISION_TIME_NEEDED;
 
     //Test
  public :

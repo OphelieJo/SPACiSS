@@ -13,6 +13,7 @@
 #include <QSet>
 #include <fstream>
 
+const double Adolescent::DISTRACTION_NEEDED = 20;
 
 Adolescent::Adolescent()
 {
@@ -42,18 +43,23 @@ void Adolescent::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-void Adolescent::varyDistraction(){
-   //Allocation of value for "basic"/low distraction between 0 et 0.5
-   uniform_real_distribution<> dDistribution(0, 0.5);
-
-   //Random draw to dertimine if adolescent is very distracted (<=20)
-   uniform_real_distribution<> dist (0, 100);
-   double randomDist = dist(RNG());
-   if (randomDist > 20){
-       setDistraction(dDistribution(RNG()));
-   }
-   else {
-       uniform_real_distribution<> dDistribution(0.5, 1);
-       setDistraction(dDistribution(RNG()));
-   }
+double Adolescent::getDistractionNeeded() const{
+      return Adolescent::DISTRACTION_NEEDED;
 }
+
+
+//void Adolescent::varyDistraction(){
+//   //Allocation of value for "basic"/low distraction between 0 et 0.5
+//   uniform_real_distribution<> dDistribution(0, 0.5);
+
+//   //Random draw to dertimine if adolescent is very distracted (<=20)
+//   uniform_real_distribution<> dist (0, 100);
+//   double randomDist = dist(RNG());
+//   if (randomDist > 20){
+//       setDistraction(dDistribution(RNG()));
+//   }
+//   else {
+//       uniform_real_distribution<> dDistribution(0.5, 1);
+//       setDistraction(dDistribution(RNG()));
+//   }
+//}

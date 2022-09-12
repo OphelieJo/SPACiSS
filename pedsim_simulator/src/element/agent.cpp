@@ -59,6 +59,12 @@ const double Agent::ANGLE_MAX_AV = 0.25;
 
 const double Agent::MAXIMUM_MARGIN = 0.30;
 
+//add const for distraction, decision of running and decision time
+const double Agent::DISTRACTION_NEEDED = 13.5;
+const double Agent::DECISION_RUN_NEEDED = 73;
+const double Agent::DECISION_TIME_NEEDED = 0.47;
+
+
 bool SFM = false;
 
 Agent::Agent()
@@ -111,7 +117,6 @@ void Agent::initializePedestrianValues(){
 
    //uniform_real_distribution<> dDistribution(0.0, 1.0);
    //setDistraction(dDistribution(RNG()));
-   //varyDistraction();
 
    angleFrontalCollisionRisk = CONFIG.angleFrontalCollisionRisk;
    riskRadius = CONFIG.riskRadius; // increase risk radius to make ped avoid longer
@@ -148,8 +153,8 @@ void Agent::computeForces()
      if (neighbor->id == id)
         continue;
      if (neighbor->getType() == ROBOT){
-         if (decisionTime >= 0.47){
-         processCarInformation(neighbor);
+         if (decisionTime >= getDecisionTimeNeeded()){
+             processCarInformation(neighbor);
          }
 
          decisionTime += CONFIG.getTimeStepSize();
@@ -739,6 +744,20 @@ double Agent::getDecisionTime()
     return decisionTime;
 }
 
+double Agent::getDistractionNeeded() const{
+       return Agent::DISTRACTION_NEEDED;
+}
+
+double Agent::getDecisionRunNeeded() const{
+       return Agent::DECISION_RUN_NEEDED;
+}
+
+double Agent::getDecisionTimeNeeded() const{
+       return Agent::DECISION_TIME_NEEDED;
+}
+
+
+
 void Agent::moveToNextPositionFromFile()
 {
    std::map<int, std::map<int, Ped::Tvector>> realTrajectories = SCENE.getInstance().getRealtrajectories();
@@ -1061,7 +1080,7 @@ void Agent::varyDistraction(){
    //Random draw to dertimine if pedestrian is very distracted (<=13.5)
    uniform_real_distribution<> dist (0, 100);
    double randomDist = dist(RNG());
-   if (randomDist > 13.5){
+   if (randomDist > getDistractionNeeded()){
        setDistraction(dDistribution(RNG()));
    }
    else {
@@ -1233,10 +1252,11 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
     if (perceiveAgent(upNeighbor, visionDistance, angle)){
         perceived.append(upNeighbor);
         neighborsSet.insert(upNeighbor);
-        if (upNeighbor->getType() == ROBOT && precPerceivedAV == false){
-           // ROS_INFO_STREAM("PEDESTRIAN ID " << getId() << "PERCEIVES A CAR ID" << neighbor->getId());
-            this->perceiveAV = true;
-            decisionTime = 0.0;
+        if (upNeighbor->getType() == ROBOT ){
+                this->perceiveAV = true;
+                if (precPerceivedAV == false){
+                        decisionTime = 0.0;
+                }
         }
     }
   }
@@ -1410,16 +1430,9 @@ void Agent::processCarInformation(const Agent* car)
                }
                // If no decision (not in groupe or first to decide)
                if(!isRunning && !isStopped){
-                  // prudent
-//                  if(ELDER)
-//                     this->wantStop();
-//                  else {
-                     //normal
                    uniform_real_distribution<> decision (0, 100);
                    double randomDecision = decision(RNG());
-                      if (randomDecision > 73){
-//                     int a = rand()%2;
-//                     if(a == 1){
+                      if (randomDecision > getDecisionRunNeeded()){
                         this->wantStop();
                      }
                      else{

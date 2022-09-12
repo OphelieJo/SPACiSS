@@ -15,8 +15,12 @@ public:
     //Methods
 public:
    void setType(Ped::Tagent::AgentType typeIn);
-   void varyDistraction();
-   void computeForces();
+   virtual double getDistractionNeeded() const;
+   virtual double getDecisionTimeNeeded() const;
+
+//Const
+   static const double DISTRACTION_NEEDED;
+   static const double DECISION_TIME_NEEDED;
 
 
    //Test
