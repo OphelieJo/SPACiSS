@@ -19,11 +19,13 @@ public:
     virtual double getDistractionNeeded() const;
     virtual double getDecisionRunNeeded() const;
     virtual double getDecisionTimeNeeded() const;
+    virtual double getDetectionTimeNeeded() const;
 
 //Const
     static const double DISTRACTION_NEEDED;
     static const double DECISION_RUN_NEEDED;
     static const double DECISION_TIME_NEEDED;
+    static const double DETECTION_TIME_NEEDED;
 
 //Test
 public :

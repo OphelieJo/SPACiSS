@@ -206,6 +206,7 @@ protected:
   double ttcImminent;
   double hesitationThreshold;
   double decisionTime;
+  double detectionTime;
 
 
 protected:
@@ -258,7 +259,7 @@ public:
    QList<const Agent*> updatePerceivedNeighbors();
    void updatePerceivedObstacles();
 
- //Add getter
+
 public :
    bool getIsStopped();
    bool getIsRunning();
@@ -266,6 +267,7 @@ public :
    virtual double getDecisionRunNeeded() const;
    virtual double getDecisionTimeNeeded() const;
    virtual double getDistractionNeeded() const;
+   virtual double getDetectionTimeNeeded() const;
 
 
 
@@ -273,10 +275,13 @@ public :
 protected :
    string nomTest;
    string processType;
+   bool aVInVisualField;
 public :
    string getNom();
    string getProcessType();
    double getDecisionTime();
+   double getDetectionTime();
+   bool getAVInVisualField();
 
 private:
    void realisticMove(double stepSizeIn);
@@ -324,6 +329,7 @@ public:
    static const double DISTRACTION_NEEDED;
    static const double DECISION_RUN_NEEDED;
    static const double DECISION_TIME_NEEDED;
+   static const double DETECTION_TIME_NEEDED;
 };
 
 #endif

@@ -15,9 +15,10 @@
 
 #include <random>
 
-const double Child::DISTRACTION_NEEDED = 2;
+const double Child::DISTRACTION_NEEDED = 2.0;
 const double Child::DECISION_RUN_NEEDED = 63.5;
-const double Child::DECISION_TIME_NEEDED = 1.4;
+const double Child::DECISION_TIME_NEEDED = 1.40;
+const double Child::DETECTION_TIME_NEEDED = 4.00;
 
 default_random_engine generator_child;
 
@@ -67,6 +68,11 @@ double Child::getDecisionRunNeeded() const{
 
 double Child::getDecisionTimeNeeded() const{
       return Child::DECISION_TIME_NEEDED;
+}
+
+double Child::getDetectionTimeNeeded() const
+{
+    return Child::DETECTION_TIME_NEEDED;
 }
 
 

@@ -63,7 +63,7 @@ const double Agent::MAXIMUM_MARGIN = 0.30;
 const double Agent::DISTRACTION_NEEDED = 13.5;
 const double Agent::DECISION_RUN_NEEDED = 73;
 const double Agent::DECISION_TIME_NEEDED = 0.47;
-
+const double Agent::DETECTION_TIME_NEEDED = 0.25;
 
 bool SFM = false;
 
@@ -91,6 +91,7 @@ Agent::Agent()
   perceiveAV = false;
   collideAV = false;
   nomTest = "agent";
+  aVInVisualField = false;
 }
 
 string Agent::getNom()
@@ -153,11 +154,13 @@ void Agent::computeForces()
      if (neighbor->id == id)
         continue;
      if (neighbor->getType() == ROBOT){
-         if (decisionTime >= getDecisionTimeNeeded()){
-             processCarInformation(neighbor);
-         }
-
-         decisionTime += CONFIG.getTimeStepSize();
+         if (perceiveAV) {
+             if (decisionTime >= getDecisionTimeNeeded()){
+               //if (decisionTime >= 1.4){
+                 processCarInformation(neighbor);
+             }
+         decisionTime += 0.1;
+       }
 
          // is agent colliding with AV ?
          Ped::Tvector diff = neighbor->p - p;
@@ -744,16 +747,34 @@ double Agent::getDecisionTime()
     return decisionTime;
 }
 
-double Agent::getDistractionNeeded() const{
+double Agent::getDetectionTime()
+{
+    return detectionTime;
+}
+
+bool Agent::getAVInVisualField()
+{
+    return aVInVisualField;
+}
+
+double Agent::getDistractionNeeded() const
+{
        return Agent::DISTRACTION_NEEDED;
 }
 
-double Agent::getDecisionRunNeeded() const{
+double Agent::getDecisionRunNeeded() const
+{
        return Agent::DECISION_RUN_NEEDED;
 }
 
-double Agent::getDecisionTimeNeeded() const{
+double Agent::getDecisionTimeNeeded() const
+{
        return Agent::DECISION_TIME_NEEDED;
+}
+
+double Agent::getDetectionTimeNeeded() const
+{
+    return Agent::DETECTION_TIME_NEEDED;
 }
 
 
@@ -1237,7 +1258,8 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
   QList<const Agent*> perceived;
   set<const Ped::Tagent*> neighborsSet;
 
-  bool precPerceivedAV = this -> perceiveAV;
+  bool precPerceivedAV = this->perceiveAV;
+  this->aVInVisualField = false;
 
   this->perceiveAV = false;
   double angle = getVisionAngleDeg();
@@ -1252,11 +1274,16 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
     if (perceiveAgent(upNeighbor, visionDistance, angle)){
         perceived.append(upNeighbor);
         neighborsSet.insert(upNeighbor);
-        if (upNeighbor->getType() == ROBOT ){
+        if (upNeighbor->getType() == ROBOT){
+            this->aVInVisualField = true;
+            if (detectionTime >= getDetectionTimeNeeded()){
+            //if (detectionTime >= 4.0){
                 this->perceiveAV = true;
+            }
                 if (precPerceivedAV == false){
                         decisionTime = 0.0;
                 }
+            detectionTime += CONFIG.getTimeStepSize();
         }
     }
   }
