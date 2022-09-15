@@ -157,12 +157,13 @@ void Agent::computeForces()
         continue;
      if (neighbor->getType() == ROBOT){
          if (perceiveAV) {
+             decisionTime += CONFIG.getTimeStepSize();
              if (decisionTime >= getDecisionTimeNeeded()){
                //if (decisionTime >= 1.4){
                  processCarInformation(neighbor);
              }
          //precDecisionTime = this->decisionTime;
-         decisionTime += CONFIG.getTimeStepSize();
+         //decisionTime += CONFIG.getTimeStepSize();
        }
 
          // is agent colliding with AV ?
@@ -1280,6 +1281,7 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
         neighborsSet.insert(upNeighbor);
         if (upNeighbor->getType() == ROBOT){
             this->aVInVisualField = true;
+            detectionTime += CONFIG.getTimeStepSize();
             if (this->detectionTime >= getDetectionTimeNeeded()){
             //if (detectionTime >= 4.0){
                 this->perceiveAV = true;
@@ -1288,7 +1290,7 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
                         decisionTime = 0.0;
                 }
             //precDetectionTime = this->detectionTime;
-            detectionTime += CONFIG.getTimeStepSize();
+            //detectionTime += CONFIG.getTimeStepSize();
         }
     }
   }
