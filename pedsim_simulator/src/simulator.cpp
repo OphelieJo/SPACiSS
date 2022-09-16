@@ -220,9 +220,9 @@ void Simulator::runSimulation()
 
 
         for (Agent *agent : SCENE.getAgents()) {
-            //ROS_INFO_STREAM(agent->getType() << "," << agent->getNom() << "," << agent->getVelocity().length() << "," << agent->getDistraction());
-          ROS_INFO_STREAM(agent->getId() << "," << agent->getType() << "," << agent->getNom()
-                          << "," << agent->getDetectionTime() << "," << agent->getAVInVisualField() << "," << agent->getDecisionTime()<< "," << agent->isPerceivingAV() << "," << agent->getProcessType());
+            ROS_INFO_STREAM(agent->getType() << "," << agent->getNom() << "," << agent->getVelocity().length() << "," << agent->getDistPrec() << "," << agent->getDistraction() << "," << agent->getDistTextPrec() << "," <<agent->getDistractionText() << "," << agent->getDistMusicPrec() << "," <<agent->getDistractionMusic());
+//          ROS_INFO_STREAM(agent->getId() << "," << agent->getType() << "," << agent->getNom()
+//                          << "," << agent->getDetectionTime() << "," << agent->getAVInVisualField() << "," << agent->getDecisionTime()<< "," << agent->isPerceivingAV() << "," << agent->getProcessType());
 
 //          ROS_INFO_STREAM(agent->getId() << "," << agent->getType() << "," << agent->getNom()
 //                          << "," << agent->getVelocity().length() << ","

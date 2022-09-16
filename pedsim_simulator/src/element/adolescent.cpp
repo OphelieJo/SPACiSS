@@ -13,7 +13,7 @@
 #include <QSet>
 #include <fstream>
 
-const double Adolescent::DISTRACTION_NEEDED = 20;
+const double Adolescent::DISTRACTION_PHONE_NEEDED = 20;
 
 Adolescent::Adolescent()
 {
@@ -43,8 +43,8 @@ void Adolescent::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-double Adolescent::getDistractionNeeded() const{
-      return Adolescent::DISTRACTION_NEEDED;
+double Adolescent::getDistractionPhoneNeeded() const{
+      return Adolescent::DISTRACTION_PHONE_NEEDED;
 }
 
 

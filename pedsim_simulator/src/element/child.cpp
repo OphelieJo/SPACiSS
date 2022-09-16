@@ -15,7 +15,7 @@
 
 #include <random>
 
-const double Child::DISTRACTION_NEEDED = 2.0;
+const double Child::DISTRACTION_PHONE_NEEDED = 2.0;
 const double Child::DECISION_RUN_NEEDED = 63.5;
 const double Child::DECISION_TIME_NEEDED = 1.40;
 const double Child::DETECTION_TIME_NEEDED = 4.00;
@@ -58,8 +58,8 @@ void Child::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-double Child::getDistractionNeeded() const{
-      return Child::DISTRACTION_NEEDED;
+double Child::getDistractionPhoneNeeded() const{
+      return Child::DISTRACTION_PHONE_NEEDED;
 }
 
 double Child::getDecisionRunNeeded() const{

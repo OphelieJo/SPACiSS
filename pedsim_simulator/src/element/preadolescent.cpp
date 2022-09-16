@@ -15,7 +15,7 @@
 
 #include <random>
 
-const double Preadolescent::DISTRACTION_NEEDED = 5;
+const double Preadolescent::DISTRACTION_PHONE_NEEDED = 5;
 const double Preadolescent::DECISION_TIME_NEEDED = 0.76;
 
 default_random_engine generator_preado;
@@ -55,8 +55,8 @@ void Preadolescent::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-double Preadolescent::getDistractionNeeded() const{
-      return Preadolescent::DISTRACTION_NEEDED;
+double Preadolescent::getDistractionPhoneNeeded() const{
+      return Preadolescent::DISTRACTION_PHONE_NEEDED;
 }
 
 double Preadolescent::getDecisionTimeNeeded() const{

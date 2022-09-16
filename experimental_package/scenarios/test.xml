@@ -53,35 +53,35 @@
     
    
 <!-- Speed and distraction test for 1 type -->
-  <agent x="0" y="10" n="9" dx="50" dy="30" type="1" purpose="1">
+  <agent x="0" y="10" n="9" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal1" />
          <addwaypoint id="goal6" />
    </agent>
-   <agent x="0" y="10" n="9" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="9" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal2" />
          <addwaypoint id="goal8" />
    </agent>
-   <agent x="0" y="10" n="9" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="9" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal3" />
          <addwaypoint id="goal5" />
    </agent>
-   <agent x="0" y="10" n="9" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="9" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal4" />
          <addwaypoint id="goal2" />
    </agent>
-   <agent x="0" y="10" n="9" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="9" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal5" />
          <addwaypoint id="goal8" />
    </agent>
-   <agent x="0" y="10" n="10" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="10" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal6" />
          <addwaypoint id="goal5" />
    </agent>
-   <agent x="0" y="10" n="10" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="10" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal7" />
          <addwaypoint id="goal1" />
    </agent>
-   <agent x="0" y="10" n="10" dx="50" dy="30" type="1" purpose="1">
+   <agent x="0" y="10" n="10" dx="50" dy="30" type="0" purpose="1">
          <addwaypoint id="goal8" />
          <addwaypoint id="goal4" />
    </agent>

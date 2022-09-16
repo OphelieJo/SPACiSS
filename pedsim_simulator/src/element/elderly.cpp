@@ -15,7 +15,7 @@
 
 #include <random>
 
-const double Elderly::DISTRACTION_NEEDED = 0.5;
+const double Elderly::DISTRACTION_PHONE_NEEDED = 0.5;
 const double Elderly::DECISION_RUN_NEEDED = 27;
 const double Elderly::DECISION_TIME_NEEDED = 0.88;
 
@@ -53,8 +53,8 @@ void Elderly::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-double Elderly::getDistractionNeeded() const{
-      return Elderly::DISTRACTION_NEEDED;
+double Elderly::getDistractionPhoneNeeded() const{
+      return Elderly::DISTRACTION_PHONE_NEEDED;
 }
 
 double Elderly::getDecisionRunNeeded() const{

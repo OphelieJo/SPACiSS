@@ -224,6 +224,10 @@ protected:
   bool emergencyStop;
   double runVmax;
 
+//Add of distractionText and distractionMusic
+  double distractionText;
+  double distractionMusic;
+
 
 public:
   double getRadius(Ped::Tangle angle) const;
@@ -243,7 +247,7 @@ public:
   void setAttentionDistance(double);
   AgentPurpose getPurpose() const;
   void setPurpose(AgentPurpose purposeIn);
-  void setDistraction(double);
+  void setDistraction(double, double);
   double getDistraction() const;
   void varyDistraction();
   double getVisionArea() const;
@@ -260,14 +264,17 @@ public:
    void updatePerceivedObstacles();
 
 
+//new getters
 public :
    bool getIsStopped();
    bool getIsRunning();
    double getAgentRadius() const;
    virtual double getDecisionRunNeeded() const;
    virtual double getDecisionTimeNeeded() const;
-   virtual double getDistractionNeeded() const;
+   virtual double getDistractionPhoneNeeded() const;
    virtual double getDetectionTimeNeeded() const;
+   double getDistractionText() const;
+   double getDistractionMusic() const;
 
 
 
@@ -276,12 +283,19 @@ protected :
    string nomTest;
    string processType;
    bool aVInVisualField;
+   double distTextPrec;
+   double distMusicPrec;
+   double ditsPrec;
+
 public :
    string getNom();
    string getProcessType();
    double getDecisionTime();
    double getDetectionTime();
    bool getAVInVisualField();
+   double getDistTextPrec();
+   double getDistMusicPrec();
+   double getDistPrec();
 
 private:
    void realisticMove(double stepSizeIn);
@@ -306,7 +320,7 @@ private:
 
    //New update for walking speed (used to modulate walking speed depending on distraction)
  private :
-   void updateVmax(double, double);
+   void updateVmax(double, double, double, double);
 
 
 public:
@@ -326,7 +340,7 @@ public:
    static const double ANGLE_MAX_AV;
 
    //add const for decision of running and decision time
-   static const double DISTRACTION_NEEDED;
+   static const double DISTRACTION_PHONE_NEEDED;
    static const double DECISION_RUN_NEEDED;
    static const double DECISION_TIME_NEEDED;
    static const double DETECTION_TIME_NEEDED;
