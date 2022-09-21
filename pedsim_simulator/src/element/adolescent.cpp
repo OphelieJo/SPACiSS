@@ -13,7 +13,9 @@
 #include <QSet>
 #include <fstream>
 
-const double Adolescent::DISTRACTION_PHONE_NEEDED = 20;
+const double Adolescent::DISTRACTION_PHONEALL_NEEDED = 25;
+const double Adolescent::DISTRACTION_PHONE_NEEDED = 15.25;
+const double Adolescent::DISTRACTION_MUSIC_NEEDEED = 9.75;
 
 Adolescent::Adolescent()
 {
@@ -43,23 +45,18 @@ void Adolescent::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-double Adolescent::getDistractionPhoneNeeded() const{
-      return Adolescent::DISTRACTION_PHONE_NEEDED;
+double Adolescent::getDistractionPhoneAllNeeded() const
+{
+       return Adolescent::DISTRACTION_PHONEALL_NEEDED;
 }
 
+double Adolescent::getDistractionPhoneNeeded() const
+{
+       return Adolescent::DISTRACTION_PHONE_NEEDED;
+}
 
-//void Adolescent::varyDistraction(){
-//   //Allocation of value for "basic"/low distraction between 0 et 0.5
-//   uniform_real_distribution<> dDistribution(0, 0.5);
+double Adolescent::getDistractionMusicNeeded() const
+{
+       return Adolescent::DISTRACTION_MUSIC_NEEDEED;
+}
 
-//   //Random draw to dertimine if adolescent is very distracted (<=20)
-//   uniform_real_distribution<> dist (0, 100);
-//   double randomDist = dist(RNG());
-//   if (randomDist > 20){
-//       setDistraction(dDistribution(RNG()));
-//   }
-//   else {
-//       uniform_real_distribution<> dDistribution(0.5, 1);
-//       setDistraction(dDistribution(RNG()));
-//   }
-//}

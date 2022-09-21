@@ -60,7 +60,9 @@ const double Agent::ANGLE_MAX_AV = 0.25;
 const double Agent::MAXIMUM_MARGIN = 0.30;
 
 //add const for distraction, decision of running and decision time
-const double Agent::DISTRACTION_PHONE_NEEDED = 13.5;
+const double Agent::DISTRACTION_PHONEALL_NEEDED = 18.9;
+const double Agent::DISTRACTION_PHONE_NEEDED = 13.2;
+const double Agent::DISTRACTION_MUSIC_NEEDEED = 5.7;
 const double Agent::DECISION_RUN_NEEDED = 73;
 const double Agent::DECISION_TIME_NEEDED = 0.47;
 const double Agent::DETECTION_TIME_NEEDED = 0.25;
@@ -761,9 +763,19 @@ bool Agent::getAVInVisualField()
     return aVInVisualField;
 }
 
+double Agent::getDistractionPhoneAllNeeded() const
+{
+       return Agent::DISTRACTION_PHONEALL_NEEDED;
+}
+
 double Agent::getDistractionPhoneNeeded() const
 {
        return Agent::DISTRACTION_PHONE_NEEDED;
+}
+
+double Agent::getDistractionMusicNeeded() const
+{
+       return Agent::DISTRACTION_MUSIC_NEEDEED;
 }
 
 double Agent::getDecisionRunNeeded() const
@@ -1074,54 +1086,54 @@ double Agent::getDistraction() const{
    return distraction;
 }
 
-double Agent::getDistractionText() const{
-    return distractionText;
+double Agent::getDistractionPhone() const{
+    return distractionPhone;
 }
 
 double Agent::getDistractionMusic() const{
     return distractionMusic;
 }
 
-void Agent::setDistraction(double distractionText, double distractionMusic){
+void Agent::setDistraction(double distractionPhone, double distractionMusic){
     if(type == ROBOT)
        return;
    //If distraction disabled: force to 0 (not distracted at all)
    if (!CONFIG.distraction_enabled){
-      distractionText = 0.0;
+      distractionPhone = 0.0;
       distractionMusic = 0.0;
    }
 
    // While car is perceived: not distracted
    if(perceiveAV){
-      distractionText = 0.0;
+      distractionPhone = 0.0;
       distractionMusic = 0.0;
    }
 
-   double distractionTextLimited = max(min(distractionText, 1.0), 0.0);
+   double distractionPhoneLimited = max(min(distractionPhone, 1.0), 0.0);
    double distractionMusicLimited = max(min(distractionMusic, 1.0), 0.0);
-   double distractionTextPrec = this->distractionText; //save value of distraction for updateVmax
-   this->distTextPrec = distractionTextPrec;
-   this->distractionText = distractionTextLimited;
+   double distractionPhonePrec = this->distractionPhone; //save value of distraction for updateVmax
+   this->distPhonePrec = distractionPhonePrec;
+   this->distractionPhone = distractionPhoneLimited;
    double distractionMusicPrec = this->distractionMusic;
    this->distMusicPrec = distractionMusicPrec;
    this->distractionMusic = distractionMusicLimited;
    this->ditsPrec = this->distraction;
 
-   if ((distractionText>=0.5) && (distractionMusic<0.5)) {
-       this->distraction = distractionTextLimited;
+   if ((distractionPhone>=0.5) && (distractionMusic<0.5)) {
+       this->distraction = distractionPhoneLimited;
    }
-   else if ((distractionText<0.5) && (distractionMusic>=0.5)){
+   else if ((distractionPhone<0.5) && (distractionMusic>=0.5)){
        this->distraction = distractionMusicLimited;
    }
-   else this->distraction = (distractionTextLimited + distractionMusicLimited)/2;
+   else this->distraction = (distractionPhoneLimited + distractionMusicLimited)/2;
 
    updateVision(distraction);
    updateAttention(distraction);
-   updateVmax(this->distractionText, this->distractionMusic, distractionTextPrec, distractionMusicPrec);
+   updateVmax(this->distractionPhone, this->distractionMusic, distractionPhonePrec, distractionMusicPrec);
 }
 
-double Agent::getDistTextPrec() {
-    return distTextPrec;
+double Agent::getDistPhonePrec() {
+    return distPhonePrec;
 }
 
 double Agent::getDistMusicPrec() {
@@ -1137,8 +1149,6 @@ void Agent::varyDistraction(){
    if(type == ROBOT)
       return;
 
-//   double distText;
-//   double distMusic;
    //Allocation of value for "basic"/low distraction between 0 et 0.5
    uniform_real_distribution<> dDistribution(0, 0.5);
    //Allocation of value for important distraction between 0.5 et 1
@@ -1146,27 +1156,27 @@ void Agent::varyDistraction(){
 
    //Random draw to dertimine if pedestrian is very distracted (<=13.5)
    uniform_real_distribution<> dist (0, 100);
-   double randomDistText = dist(RNG());
+   double randomDistPhone = dist(RNG());
    double randomDistMusic = dist(RNG());
 
-   if ((randomDistText > getDistractionPhoneNeeded()) && (randomDistMusic > getDistractionPhoneNeeded())){
-//       distText = dDistribution(RNG());
+   if ((randomDistPhone > getDistractionPhoneNeeded()) && (randomDistMusic > getDistractionMusicNeeded())){
+//       distPhone = dDistribution(RNG());
 //       distMusic = dDistribution(RNG());
        setDistraction(dDistribution(RNG()), dDistribution(RNG()));
    }
-   if ((randomDistMusic > getDistractionPhoneNeeded()) && (randomDistText <= getDistractionPhoneNeeded())) {
+   if ((randomDistMusic > getDistractionMusicNeeded()) && (randomDistPhone <= getDistractionPhoneNeeded())) {
 //       distMusic = dDistribution(RNG());
-//       distText = dDistribution2(RNG());
+//       distPhone = dDistribution2(RNG());
        setDistraction(dDistribution2(RNG()), dDistribution(RNG()));
    }
 
-   if ((randomDistText > getDistractionPhoneNeeded()) && (randomDistMusic <= getDistractionPhoneNeeded())){
-//       distText = dDistribution(RNG());
+   if ((randomDistPhone > getDistractionPhoneNeeded()) && (randomDistMusic <= getDistractionMusicNeeded())){
+//       distPhone = dDistribution(RNG());
 //       distMusic = dDistribution2(RNG());
        setDistraction(dDistribution(RNG()), dDistribution2(RNG()));
    }
-   if ((randomDistText <= getDistractionPhoneNeeded()) && (randomDistMusic <= getDistractionPhoneNeeded())){
-//       distText = dDistribution2(RNG());
+   if ((randomDistPhone <= getDistractionPhoneNeeded()) && (randomDistMusic <= getDistractionMusicNeeded())){
+//       distPhone = dDistribution2(RNG());
 //       distMusic = dDistribution2(RNG());
        setDistraction(dDistribution2(RNG()), dDistribution2(RNG()));
    }
@@ -1198,20 +1208,20 @@ void Agent::updateAttention(double distraction){
 }
 
 //Update the walking speed with distraction : -0.17m/s (distraction = use phone)
-void Agent::updateVmax(double distractionText, double distractionMusic, double distractionTextPrec, double distractionMusicPrec){
+void Agent::updateVmax(double distractionPhone, double distractionMusic, double distractionPhonePrec, double distractionMusicPrec){
     //no music distraction
     if ((distractionMusic<0.5) && (distractionMusicPrec<0.5)) {
-        //no texting distraction --> texting distraction
-        if ((distractionTextPrec <0.5) && (distractionText >= 0.5) && (this->vmax>0.19)){
+        //no using phone distraction --> using phone distraction
+        if ((distractionPhonePrec <0.5) && (distractionPhone >= 0.5) && (this->vmax>0.19)){
             this->setVmax(this->vmax -= 0.19);
         }
-        //texting distraction --> no texting distraction
-        if ((distractionTextPrec >=0.5) && (distractionText < 0.5)){
+        //using phone distraction --> no using phone distraction
+        if ((distractionPhonePrec >=0.5) && (distractionPhone < 0.5)){
             this->setVmax(this->vmax += 0.19);
         }
 
-    //no texting distraction
-    } else if ((distractionText<0.5) && (distractionTextPrec<0.5)){
+    //no using phone distraction
+    } else if ((distractionPhone<0.5) && (distractionPhonePrec<0.5)){
         //no music distraction --> music distraction
         if ((distractionMusicPrec <0.5) && (distractionMusic >= 0.5)){
             this->setVmax(this->vmax += 0.07);
@@ -1221,23 +1231,23 @@ void Agent::updateVmax(double distractionText, double distractionMusic, double d
             this->setVmax(this->vmax -= 0.07);
         }
 
-    //music and texting distractions vary
+    //music and using phone distractions vary
     } else {
-        //no texting distraction --> texting distraction && music distraction --> no music distraction
-        if ((distractionTextPrec <0.5) && (distractionText >= 0.5) && (distractionMusicPrec >=0.5) && (distractionMusic < 0.5) && (this->vmax>0.26)) {
+        //no using phone distraction --> using phone distraction && music distraction --> no music distraction
+        if ((distractionPhonePrec <0.5) && (distractionPhone >= 0.5) && (distractionMusicPrec >=0.5) && (distractionMusic < 0.5) && (this->vmax>0.26)) {
             this->setVmax(this->vmax -= 0.26); //0.26 = subtract 0.07 and subtract 0.19
         }
-        //texting distraction --> no texting distraction && no music distraction --> music distraction
-        if ((distractionTextPrec >=0.5) && (distractionText<0.5) && (distractionMusicPrec <0.5) && (distractionMusic >= 0.5)) {
+        //using phone distraction --> no using phone distraction && no music distraction --> music distraction
+        if ((distractionPhonePrec >=0.5) && (distractionPhone<0.5) && (distractionMusicPrec <0.5) && (distractionMusic >= 0.5)) {
             this->setVmax(this->vmax += 0.26); //0.26 = add 0.07 and add 0.19
         }
 
-        //no texting and no music distraction --> texting and music distractions
-        if ((distractionTextPrec <0.5) && (distractionText >= 0.5) && (distractionMusicPrec <0.5) && (distractionMusic >= 0.5) && (this->vmax>0.12)){
+        //no using phone and no music distraction --> using phone and music distractions
+        if ((distractionPhonePrec <0.5) && (distractionPhone >= 0.5) && (distractionMusicPrec <0.5) && (distractionMusic >= 0.5) && (this->vmax>0.12)){
             this->setVmax(this->vmax -= 0.12); //0.12 = subtract 0.19 and add 0.07
         }
-        //texting and music distraction --> texting and no music distraction
-        if ((distractionTextPrec >=0.5) && (distractionText < 0.5) && (distractionMusicPrec >=0.5) && (distractionMusic < 0.5)){
+        //using phone and music distraction --> using phone and no music distraction
+        if ((distractionPhonePrec >=0.5) && (distractionPhone < 0.5) && (distractionMusicPrec >=0.5) && (distractionMusic < 0.5)){
             this->setVmax(this->vmax += 0.12); //0.12 = add 0.19 and subtract 0.07
         }
     }

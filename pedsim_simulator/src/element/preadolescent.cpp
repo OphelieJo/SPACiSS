@@ -15,7 +15,9 @@
 
 #include <random>
 
-const double Preadolescent::DISTRACTION_PHONE_NEEDED = 5;
+const double Preadolescent::DISTRACTION_PHONEALL_NEEDED = 6;
+const double Preadolescent::DISTRACTION_PHONE_NEEDED = 5.7;
+const double Preadolescent::DISTRACTION_MUSIC_NEEDEED = 0.3;
 const double Preadolescent::DECISION_TIME_NEEDED = 0.76;
 
 default_random_engine generator_preado;
@@ -55,72 +57,21 @@ void Preadolescent::setType(Ped::Tagent::AgentType typeIn)
   emit typeChanged(typeIn);
 }
 
-double Preadolescent::getDistractionPhoneNeeded() const{
-      return Preadolescent::DISTRACTION_PHONE_NEEDED;
+double Preadolescent::getDistractionPhoneAllNeeded() const
+{
+       return Preadolescent::DISTRACTION_PHONEALL_NEEDED;
+}
+
+double Preadolescent::getDistractionPhoneNeeded() const
+{
+       return Preadolescent::DISTRACTION_PHONE_NEEDED;
+}
+
+double Preadolescent::getDistractionMusicNeeded() const
+{
+       return Preadolescent::DISTRACTION_MUSIC_NEEDEED;
 }
 
 double Preadolescent::getDecisionTimeNeeded() const{
       return Preadolescent::DECISION_TIME_NEEDED;
 }
-
-//void Preadolescent::varyDistraction(){
-//   //Allocation of value for "basic"/low distraction between 0 et 0.5
-//   uniform_real_distribution<> dDistribution(0, 0.5);
-
-//   //Random draw to dertimine if preadolescent is very distracted (<=5)
-//   uniform_real_distribution<> dist (0, 100);
-//   double randomDist = dist(RNG());
-//   if (randomDist > 5){
-//       setDistraction(dDistribution(RNG()));
-//   }
-//   else {
-//       uniform_real_distribution<> dDistribution(0.5, 1);
-//       setDistraction(dDistribution(RNG()));
-//   }
-//    //setDistraction(0.4);
-//}
-
-
-//void Preadolescent::computeForces()
-//{
-//  // update forces
-//  desiredforce = desiredForce();
-//  if (forceFactorSocial > 0)
-//     socialforce = socialForce();
-//  if (forceFactorObstacle > 0)
-//    obstacleforce = obstacleForce();
-//  myforce = myForce(desiredDirection);
-
-//  collideAV = false;
-//  for (auto neighbor : getNeighbors())
-//  {
-//     if (neighbor->getId() == id)
-//        continue;
-//     if (neighbor->getType() == ROBOT){
-//         //verif decisionTime
-//         if (decisionTime >= 0.76)
-//         processCarInformation(neighbor);
-//         else decisionTime += CONFIG.getTimeStepSize();
-
-//         // is agent colliding with AV ?
-//         Ped::Tvector diff = neighbor->getPosition() - p;
-//         double physicalDistance = diff.length() -
-//               (this->getRadius(v.angleTo(diff),0.0) + neighbor->getRadius(neighbor->getWalkingDirection().angleTo(-diff),0.0));
-//           if(physicalDistance <= 0.0){
-//              collideAV = true;
-//              v = physicalForce() + obstacleforce;
-//              ROS_INFO_STREAM(id << " COLLIDE");
-//           }
-//      }
-//   }
-
-//  if (!perceiveAV) {
-//     this->isRunning = false;
-//     this->isStopped = false;
-//     this->isSteppingBack = false;
-//  }
-
-//  if(type==ROBOT){
-//     this->disableForce("Random");
-//  }
-//}

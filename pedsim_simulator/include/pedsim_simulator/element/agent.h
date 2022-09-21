@@ -224,8 +224,8 @@ protected:
   bool emergencyStop;
   double runVmax;
 
-//Add of distractionText and distractionMusic
-  double distractionText;
+//Add of distractionPhone and distractionMusic
+  double distractionPhone;
   double distractionMusic;
 
 
@@ -271,9 +271,11 @@ public :
    double getAgentRadius() const;
    virtual double getDecisionRunNeeded() const;
    virtual double getDecisionTimeNeeded() const;
+   virtual double getDistractionPhoneAllNeeded() const;
    virtual double getDistractionPhoneNeeded() const;
+   virtual double getDistractionMusicNeeded() const;
    virtual double getDetectionTimeNeeded() const;
-   double getDistractionText() const;
+   double getDistractionPhone() const;
    double getDistractionMusic() const;
 
 
@@ -283,7 +285,7 @@ protected :
    string nomTest;
    string processType;
    bool aVInVisualField;
-   double distTextPrec;
+   double distPhonePrec;
    double distMusicPrec;
    double ditsPrec;
 
@@ -293,7 +295,7 @@ public :
    double getDecisionTime();
    double getDetectionTime();
    bool getAVInVisualField();
-   double getDistTextPrec();
+   double getDistPhonePrec();
    double getDistMusicPrec();
    double getDistPrec();
 
@@ -340,7 +342,9 @@ public:
    static const double ANGLE_MAX_AV;
 
    //add const for decision of running and decision time
+   static const double DISTRACTION_PHONEALL_NEEDED;
    static const double DISTRACTION_PHONE_NEEDED;
+   static const double DISTRACTION_MUSIC_NEEDEED;
    static const double DECISION_RUN_NEEDED;
    static const double DECISION_TIME_NEEDED;
    static const double DETECTION_TIME_NEEDED;

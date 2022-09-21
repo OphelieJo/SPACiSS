@@ -13,10 +13,14 @@ public:
    //Methods
 public:
    void setType(Ped::Tagent::AgentType typeIn);
+   virtual double getDistractionPhoneAllNeeded() const;
    virtual double getDistractionPhoneNeeded() const;
+   virtual double getDistractionMusicNeeded() const;
 
 //Const
+   static const double DISTRACTION_PHONEALL_NEEDED;
    static const double DISTRACTION_PHONE_NEEDED;
+   static const double DISTRACTION_MUSIC_NEEDEED;
 
    //Test
 public :
