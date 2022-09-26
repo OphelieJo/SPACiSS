@@ -116,6 +116,7 @@ void Ped::Tagent::setForceFactorObstacle(double f)
   forceFactorObstacle = f;
 }
 
+
 /// Calculates the force between this agent and the next assigned waypoint.
 /// If the waypoint has been reached, the next waypoint in the list will be
 /// selected.

@@ -188,16 +188,6 @@ protected:
 private:
   double ellipseWidth;
   double ellipseThickness;
-//  double angleFrontalCollisionRisk;
-//  double dangerRadius;
-//  double riskRadius;
-//  double ttcLow;
-//  double ttcUp;
-//  double ttcImminent;
-//  double hesitationThreshold;
-
-  //Attribut private became protected for heritage
-protected:
   double angleFrontalCollisionRisk;
   double dangerRadius;
   double riskRadius;
@@ -205,6 +195,16 @@ protected:
   double ttcUp;
   double ttcImminent;
   double hesitationThreshold;
+
+  //Attribut private became protected for heritage
+protected:
+//  double angleFrontalCollisionRisk;
+//  double dangerRadius;
+//  double riskRadius;
+//  double ttcLow;
+//  double ttcUp;
+//  double ttcImminent;
+//  double hesitationThreshold;
   double decisionTime;
   double detectionTime;
 

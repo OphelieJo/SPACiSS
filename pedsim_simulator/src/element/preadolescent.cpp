@@ -15,9 +15,9 @@
 
 #include <random>
 
-const double Preadolescent::DISTRACTION_PHONEALL_NEEDED = 6;
+const double Preadolescent::DISTRACTION_PHONEALL_NEEDED = 7;
 const double Preadolescent::DISTRACTION_PHONE_NEEDED = 5.7;
-const double Preadolescent::DISTRACTION_MUSIC_NEEDEED = 0.3;
+const double Preadolescent::DISTRACTION_MUSIC_NEEDEED = 1.3;
 const double Preadolescent::DECISION_TIME_NEEDED = 0.76;
 
 default_random_engine generator_preado;
@@ -48,7 +48,7 @@ void Preadolescent::setType(Ped::Tagent::AgentType typeIn)
 
   normal_distribution<double> speed(1.20, 0.303);
   this->setVmax(speed(RNG()));
-  this->setForceFactorDesired(0.5);
+  //this->setForceFactorDesired(0.5);
   this->SetRadius(0.35);
   varyDistraction();
   initializePedestrianValues();

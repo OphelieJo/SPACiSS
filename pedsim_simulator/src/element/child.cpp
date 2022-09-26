@@ -51,10 +51,10 @@ void Child::setType(Ped::Tagent::AgentType typeIn)
 
   normal_distribution<double> speed(0.435, 0.35);
   this->setVmax(max(0.1,speed(RNG())));
-  this->setForceFactorDesired(0.5);
-  this->SetRadius(0.35);
   varyDistraction();
   initializePedestrianValues();
+  this->setForceFactorSocial(this->forceFactorSocial*0.10);
+  this->setForceFactorObstacle(this->forceFactorObstacle*0.10);
 
   // inform users
   emit typeChanged(typeIn);
