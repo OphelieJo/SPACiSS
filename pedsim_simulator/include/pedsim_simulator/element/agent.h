@@ -206,7 +206,6 @@ protected:
 //  double ttcImminent;
 //  double hesitationThreshold;
   double decisionTime;
-  double detectionTime;
 
 
 protected:
@@ -274,7 +273,6 @@ public :
    virtual double getDistractionPhoneAllNeeded() const;
    virtual double getDistractionPhoneNeeded() const;
    virtual double getDistractionMusicNeeded() const;
-   virtual double getDetectionTimeNeeded() const;
    double getDistractionPhone() const;
    double getDistractionMusic() const;
 
@@ -293,7 +291,6 @@ public :
    string getNom();
    string getProcessType();
    double getDecisionTime();
-   double getDetectionTime();
    bool getAVInVisualField();
    double getDistPhonePrec();
    double getDistMusicPrec();

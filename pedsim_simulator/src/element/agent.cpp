@@ -64,8 +64,7 @@ const double Agent::DISTRACTION_PHONEALL_NEEDED = 18.9;
 const double Agent::DISTRACTION_PHONE_NEEDED = 13.2;
 const double Agent::DISTRACTION_MUSIC_NEEDEED = 5.7;
 const double Agent::DECISION_RUN_NEEDED = 73;
-const double Agent::DECISION_TIME_NEEDED = 0.47;
-const double Agent::DETECTION_TIME_NEEDED = 0.25;
+const double Agent::DECISION_TIME_NEEDED = 0.57;
 
 bool SFM = false;
 
@@ -142,8 +141,6 @@ Agent::~Agent()
 
 void Agent::computeForces()
 {
-
-   //double precDecisionTime = this->decisionTime;
   // update forces
   desiredforce = desiredForce();
   if (forceFactorSocial > 0)
@@ -164,8 +161,6 @@ void Agent::computeForces()
                //if (decisionTime >= 1.4){
                  processCarInformation(neighbor);
              }
-         //precDecisionTime = this->decisionTime;
-         //decisionTime += CONFIG.getTimeStepSize();
        }
 
          // is agent colliding with AV ?
@@ -753,11 +748,6 @@ double Agent::getDecisionTime()
     return decisionTime;
 }
 
-double Agent::getDetectionTime()
-{
-    return detectionTime;
-}
-
 bool Agent::getAVInVisualField()
 {
     return aVInVisualField;
@@ -787,13 +777,6 @@ double Agent::getDecisionTimeNeeded() const
 {
        return Agent::DECISION_TIME_NEEDED;
 }
-
-double Agent::getDetectionTimeNeeded() const
-{
-    return Agent::DETECTION_TIME_NEEDED;
-}
-
-
 
 void Agent::moveToNextPositionFromFile()
 {
@@ -1365,11 +1348,11 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
   QList<const Agent*> perceived;
   set<const Ped::Tagent*> neighborsSet;
 
-  bool precPerceivedAV = this->perceiveAV;
-  this->aVInVisualField = false;
+//  bool precPerceivedAV = this->perceiveAV;
+//  this->aVInVisualField = false;
   //double precDetectionTime = this->detectionTime;
 
-  this->perceiveAV = false;
+//  this->perceiveAV = false;
   double angle = getVisionAngleDeg();
   double visionDistance = getVisionDistance();
 
@@ -1383,15 +1366,15 @@ QList<const Agent*> Agent::updatePerceivedNeighbors()
         perceived.append(upNeighbor);
         neighborsSet.insert(upNeighbor);
         if (upNeighbor->getType() == ROBOT){
-            this->aVInVisualField = true;
-            detectionTime += CONFIG.getTimeStepSize();
-            if (this->detectionTime >= getDetectionTimeNeeded()){
-            //if (detectionTime >= 4.0){
-                this->perceiveAV = true;
-            }
-                if (precPerceivedAV == false){
-                        decisionTime = 0.0;
-                }
+//            this->aVInVisualField = true;
+//            detectionTime += CONFIG.getTimeStepSize();
+//            if (this->detectionTime >= getDetectionTimeNeeded()){
+//            //if (detectionTime >= 4.0){
+            this->perceiveAV = true;
+//            }
+//                if (precPerceivedAV == false){
+            decisionTime = 0.0;
+//                }
             //precDetectionTime = this->detectionTime;
             //detectionTime += CONFIG.getTimeStepSize();
         }

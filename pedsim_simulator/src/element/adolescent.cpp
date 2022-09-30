@@ -16,6 +16,7 @@
 const double Adolescent::DISTRACTION_PHONEALL_NEEDED = 25;
 const double Adolescent::DISTRACTION_PHONE_NEEDED = 15.25;
 const double Adolescent::DISTRACTION_MUSIC_NEEDEED = 9.75;
+const double Adolescent::DECISION_TIME_NEEDED = 0.67;
 
 Adolescent::Adolescent()
 {
@@ -58,5 +59,10 @@ double Adolescent::getDistractionPhoneNeeded() const
 double Adolescent::getDistractionMusicNeeded() const
 {
        return Adolescent::DISTRACTION_MUSIC_NEEDEED;
+}
+
+double Adolescent::getDecisionTimeNeeded() const
+{
+    return Adolescent::DECISION_TIME_NEEDED;
 }
 

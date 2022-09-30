@@ -16,11 +16,13 @@ public:
    virtual double getDistractionPhoneAllNeeded() const;
    virtual double getDistractionPhoneNeeded() const;
    virtual double getDistractionMusicNeeded() const;
+   virtual double getDecisionTimeNeeded() const;
 
 //Const
    static const double DISTRACTION_PHONEALL_NEEDED;
    static const double DISTRACTION_PHONE_NEEDED;
    static const double DISTRACTION_MUSIC_NEEDEED;
+   static const double DECISION_TIME_NEEDED;
 
    //Test
 public :
