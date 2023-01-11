@@ -250,12 +250,12 @@ For now, the social force is configured to have the AV go straight to its destin
 
 | Class | Mother class | vmax (standard deviation) | Percentage of run decision | Decision time | Percentage of the population distracted by texting on phone | Effect of texting on walking speed | Percentage of population distracted by listening music | Effect of listening music on walking speed
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Agent | Ped_Agent | 1.34 (0.26) | 73 | 0.57 | ------------- | ------------- | ------------- | -------------
-| Child | Agent | 0.43 (0.35) | 63.5 | 0.87 | ------------- | ------------- | ------------- | -------------
-| Preadolescent | Child | 1.23 (0.31) | 63.5 | 0.85 | ------------- | ------------- | ------------- | -------------
-| Adolescent | Agent | 1.34 (0.26) | 73 | 0.67 | ------------- | ------------- | ------------- | -------------
-| Elderly | Agent | 1.29 (0.24) | 27 | 0.88 | ------------- | ------------- | ------------- | -------------
-| Oldelderly | Elderly | 1.05 (0.24) | 27 | 1.45 | ------------- | ------------- | ------------- | -------------
+| Agent | Ped_Agent | 1.34 (0.26) | 73 | ---- | 13.2 | -0.17 | 5.7 | +0.54
+| Child | Agent | 0.43 (0.35) | 63.5 | ---- | 1.6 | -0.17 | 1.3 | +0.54
+| Preadolescent | Child | 1.23 (0.31) | 63.5 | ---- | 5.7 | -0.17 | 1.3 | +0.54
+| Adolescent | Agent | 1.34 (0.26) | 73 | ---- | 15.25 | -0.17 | 9.75 | +0.54
+| Elderly | Agent | 1.29 (0.24) | 27 | ---- | 0.25 | -0.17 | 0.25 | +0.54
+| Oldelderly | Elderly | 1.05 (0.24) | 27 | ---- |  0.25 | -0.17 | 0.25 | +0.54
 
 <br/>
 
